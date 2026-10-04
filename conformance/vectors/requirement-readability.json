@@ -1,0 +1,32 @@
+{
+  "id": "REQ-001",
+  "title": "Required document presence is not equivalent to readable evidence",
+  "capability": "POLICY",
+  "input": {
+    "requirement": {
+      "document_type": "TAX_DOCUMENT",
+      "required": true
+    },
+    "candidate": {
+      "present": true,
+      "accessible": true,
+      "classification": {
+        "type": "TAX_DOCUMENT",
+        "confidence": 0.94
+      },
+      "required_material_field": {
+        "state": "ILLEGIBLE"
+      }
+    }
+  },
+  "expected": {
+    "must": [
+      "distinguish_document_presence_from_material_field_readability",
+      "produce_review_or_unsatisfied_finding_according_to_claimed_policy"
+    ],
+    "must_not": [
+      "mark_requirement_satisfied_only_because_file_is_present",
+      "invent_missing_material_value"
+    ]
+  }
+}
