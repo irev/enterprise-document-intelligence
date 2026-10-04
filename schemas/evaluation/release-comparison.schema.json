@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/evaluation/release-comparison.schema.json",
+  "title":"Model Release Comparison",
+  "type":"object",
+  "required":["candidate_release","baseline_release","dataset_ref","metrics","decision"],
+  "properties":{
+    "candidate_release":{"type":"string"},"baseline_release":{"type":"string"},"dataset_ref":{"type":"string"},
+    "metrics":{"type":"array","items":{"type":"object","required":["name","candidate","baseline"],"properties":{"name":{"type":"string"},"segment":{"type":["string","null"]},"candidate":{"type":"number"},"baseline":{"type":"number"},"delta":{"type":["number","null"]},"critical":{"type":"boolean"}},"additionalProperties":false}},
+    "decision":{"enum":["PASS","FAIL","REVIEW_REQUIRED"]},
+    "decision_policy_ref":{"type":["string","null"]}
+  },"additionalProperties":false
+}
