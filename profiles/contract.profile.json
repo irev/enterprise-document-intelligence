@@ -1,0 +1,16 @@
+{
+  "profile_id":"procurement.contract",
+  "version":"0.4.0",
+  "document_type":"CONTRACT",
+  "document_subtype":null,
+  "fields":[
+    {"name":"contract_number","data_type":"string","document_required":true,"normalization":"trim-preserve-identifier","high_risk":true},
+    {"name":"parties","data_type":"array","document_required":true,"normalization":null,"high_risk":true},
+    {"name":"effective_date","data_type":"date","document_required":false,"normalization":"iso-8601-date","high_risk":false},
+    {"name":"end_date","data_type":"date","document_required":false,"normalization":"iso-8601-date","high_risk":false},
+    {"name":"currency","data_type":"string","document_required":false,"normalization":"iso-4217","high_risk":true},
+    {"name":"contract_value","data_type":"decimal","document_required":false,"normalization":"decimal","high_risk":true},
+    {"name":"signatories","data_type":"array","document_required":false,"normalization":null,"high_risk":false}
+  ],
+  "validation_profile":"procurement.contract.default"
+}
