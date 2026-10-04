@@ -1,0 +1,10 @@
+{
+  "vector_id":"CORE-UNKNOWN-001",
+  "version":"1",
+  "capability":"CORE",
+  "requirement_refs":["docs/conformance/PLATFORM-CONFORMANCE.md#core-requirements"],
+  "input":{"scenario":"Input is outside supported taxonomy/profile."},
+  "expected":{"must_not":"force_known_class","acceptable_outcomes":["UNKNOWN","UNSUPPORTED"]},
+  "comparison":"SEMANTIC",
+  "notes":"Implementation representation may differ but abstention semantics are required."
+}
