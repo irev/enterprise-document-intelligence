@@ -53,3 +53,20 @@ Mutation operations SHOULD support an idempotency mechanism appropriate to the t
 ## Authorization
 
 Every operation MUST enforce tenant/resource authorization independent of UI visibility or caller-supplied tenant labels.
+
+
+## SHARED_SERVICE capability
+
+When an implementation is exposed to multiple registered consumer applications, it MUST follow `docs/api/SHARED-SERVICE-INTEGRATION.md`.
+
+Operations/capabilities may include:
+- authenticate and authorize a consumer application;
+- submit work within an authorized tenant scope;
+- correlate inbound interaction, processing and result delivery;
+- register/manage authorized outbound subscriptions through a protected control plane;
+- inspect outbound delivery state and retry history;
+- expose operational status without granting business approval authority.
+
+Processing outcome and outbound delivery outcome MUST remain distinct.
+
+A control panel is an implementation surface over these capabilities; it is not a separate source of business authority.
