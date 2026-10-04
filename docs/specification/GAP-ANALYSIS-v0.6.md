@@ -14,27 +14,27 @@ Audit the repository as a technology-neutral specification rather than an implem
 
 ## High-priority remaining gaps
 
-### G1 — Policy AST is underspecified
+### G1 — Policy AST is underspecified — ADDRESSED IN v0.7
 Current rule schema accepts generic objects for `when` and `assert`. This validates shape poorly and cannot guarantee portable deterministic semantics.
 
 Required next: define typed operator AST, operand/value types, missing/null/error semantics, and conformance fixtures.
 
-### G2 — Canonical field model lacks explicit field state
+### G2 — Canonical field model lacks explicit field state — ADDRESSED IN v0.7
 The canonical field currently requires raw/normalized/confidence/evidence even when a field is missing/illegible/ambiguous, while annotation schema already has states.
 
 Required next: align production field-result states such as PRESENT / NOT_PRESENT / ILLEGIBLE / AMBIGUOUS / NOT_APPLICABLE without forcing fake values/confidence.
 
-### G3 — Evidence coordinate system is undefined
+### G3 — Evidence coordinate system is undefined — ADDRESSED IN v0.7
 A four-number bounding box is present but units/origin/rotation/page-coordinate semantics are not normative.
 
 Required next: define normalized coordinate convention or explicit coordinate-space metadata.
 
-### G4 — Nested structured fields are weak
+### G4 — Nested structured fields are weak — PARTIALLY ADDRESSED IN v0.7
 Invoice line items, parties, addresses, bank/tax identity and table cells are typed only as generic array/object in profiles.
 
 Required next: reusable structured-value schemas and evidence semantics for nested/table values.
 
-### G5 — Identity/entity resolution boundary needs specification
+### G5 — Identity/entity resolution boundary needs specification — ADDRESSED IN v0.7
 Extracted vendor text and authoritative vendor/master identity are different concepts.
 
 Required next: candidate identity, resolved identity, resolver provenance, match confidence and authoritative-source boundary.
@@ -66,7 +66,7 @@ Currency/date exist conceptually, but locale-dependent numbers, identifiers, Uni
 ### G12 — Quality and confidence contracts are too open
 `quality` and provenance are generic objects; confidence calibration is documented but machine-readable calibration/decision-policy identity is absent.
 
-### G13 — Conformance tests are inventory, not executable
+### G13 — Conformance tests are inventory, not executable — PARTIALLY ADDRESSED IN v0.7
 Current CI validates schema syntax/examples but does not test implementation behavior.
 
 Required next: technology-neutral test vectors with request/input + expected semantic outcome; implementations provide their own runner/adaptor.
@@ -86,3 +86,10 @@ Need contribution/change process, deprecation lifecycle, release process, contra
 - UI accessibility requirements for reviewer applications.
 
 These SHOULD remain optional profiles unless the core interoperability contract genuinely requires them.
+
+
+## v0.7 audit update
+
+v0.7 introduced restricted policy expression schemas, canonical result v2 with explicit field states and evidence coordinates, common structured values, an entity-resolution contract, and initial technology-neutral conformance vectors.
+
+Remaining priority after v0.7: API/event capability completion, privacy/integrity/container edge-case contracts, normalization registry, quality/calibration contracts, richer executable semantic vectors, and specification governance.
