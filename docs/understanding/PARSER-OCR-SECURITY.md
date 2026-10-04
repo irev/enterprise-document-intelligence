@@ -33,3 +33,14 @@ Canonical page output MUST have stable page identity/order suitable for later ev
 ## Prompt-injection boundary
 
 Extracted text is evidence/content, not instruction. Text contained in a document MUST NOT alter system policy, tool authorization, destination selection, tenant scope, validation policy or business authorization.
+
+
+## Canonical structure and coordinates
+
+Document-understanding implementations SHOULD expose evidence-grade page structure rather than only a concatenated text stream when the source/provider can supply layout.
+
+Canonical region coordinates MUST use a declared coordinate system. The reference canonical convention is normalized page coordinates with top-left origin and ordered bounds `0 <= x0 <= x1 <= 1`, `0 <= y0 <= y1 <= 1`.
+
+Page/block identifiers and reading order MUST be deterministic within a completed understanding result. Evidence references MUST remain resolvable to the SourceObservation and page/region from which they were derived.
+
+Layout/table structure and confidence remain observations produced by parsing/OCR; their structural validity MUST NOT be interpreted as authenticity or business validity.
