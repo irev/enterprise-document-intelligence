@@ -1,0 +1,6 @@
+{
+  "vector_id":"CONTAINER-001",
+  "specification_area":"segmentation",
+  "input":{"source":"synthetic five-page PDF","semantic_pages":{"1-2":"INVOICE","3":"TAX_INVOICE","4-5":"DELIVERY_ORDER"}},
+  "expected":{"when_segmentation_capability_claimed":["preserve_source_provenance","represent_logical_segments_independently","do_not_classify_entire_container_as_only_invoice"]}
+}
