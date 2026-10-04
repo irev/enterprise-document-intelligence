@@ -65,6 +65,7 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [Architecture Principles](docs/PRINCIPLES.md)
 - [Glossary](docs/GLOSSARY.md)
 - [Architecture](docs/architecture/ARCHITECTURE.md)
+- [Master Delivery Plan](docs/MASTER-PLAN.md)
 
 ### Document contracts
 - [Document Taxonomy](docs/taxonomy/DOCUMENT-TAXONOMY.md)
