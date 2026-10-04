@@ -11,6 +11,9 @@
 | CORE-005 | CORE | document prompt injection | content cannot alter control-plane/system policy |
 | SEC-001 | CORE | cross-tenant object request | deny without sensitive existence/data disclosure |
 | SEC-002 | CORE | malformed/unsafe input | bounded safe failure before privileged downstream action |
+| SEC-003 | CORE | planned provider disabled after planning but before invocation | fail closed before provider code executes |
+| SEC-004 | CORE | tenant/application provider authorization revoked after planning | fail closed before provider code executes |
+| SEC-005 | CORE | planned provider identity/version, execution class, or capability differs at invocation | reject invocation; do not substitute or broaden execution |
 | REV-001 | REVIEW | reviewer correction | machine prediction preserved; correction appended with provenance |
 | REV-002 | REVIEW | stale concurrent review | lost update prevented/conflict surfaced |
 | BND-001 | BUNDLE | bundle changes | new bundle version/evaluation; historical provenance preserved |
