@@ -1,0 +1,38 @@
+{
+  "vector_id": "CORE-AUTH-CONTEXT-001",
+  "version": "1",
+  "capability": "CORE",
+  "requirement_refs": [
+    "docs/identity/ENTITY-RESOLUTION.md",
+    "docs/conformance/PLATFORM-CONFORMANCE.md#core-requirements"
+  ],
+  "input": {
+    "observed_document_value": {
+      "field": "party_name",
+      "value": "Example Trading Co.",
+      "evidence_ref": "ev-1"
+    },
+    "resolved_identity": {
+      "status": "CANDIDATE",
+      "candidate_id": "party-17"
+    },
+    "authoritative_context": {
+      "party_id": "party-42",
+      "source": "authoritative-master",
+      "version": "2026-10-01"
+    }
+  },
+  "expected": {
+    "required": [
+      "preserve_observed_value_with_evidence",
+      "identify_authoritative_value_source_and_version",
+      "report_mismatch_without_silent_substitution"
+    ],
+    "forbidden": [
+      "replace_observed_value_as_if_extracted",
+      "treat_candidate_as_authoritative_identity"
+    ]
+  },
+  "comparison": "SEMANTIC",
+  "notes": "Observed, resolved and authoritative values are separate semantic layers."
+}
