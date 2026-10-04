@@ -1,0 +1,18 @@
+{
+  "profile_id":"financial.tax_document.tax_invoice",
+  "version":"0.4.0",
+  "document_type":"TAX_DOCUMENT",
+  "document_subtype":"TAX_INVOICE",
+  "fields":[
+    {"name":"tax_invoice_number","data_type":"string","document_required":true,"normalization":"identifier","high_risk":true},
+    {"name":"tax_invoice_date","data_type":"date","document_required":true,"normalization":"iso-8601-date","high_risk":true},
+    {"name":"seller_name","data_type":"string","document_required":true,"normalization":"organization-name","high_risk":true},
+    {"name":"seller_tax_identifier","data_type":"string","document_required":true,"normalization":"tax-identifier","high_risk":true},
+    {"name":"buyer_name","data_type":"string","document_required":false,"normalization":"organization-name","high_risk":false},
+    {"name":"buyer_tax_identifier","data_type":"string","document_required":false,"normalization":"tax-identifier","high_risk":true},
+    {"name":"tax_base","data_type":"decimal","document_required":false,"normalization":"decimal","high_risk":true},
+    {"name":"tax_amount","data_type":"decimal","document_required":true,"normalization":"decimal","high_risk":true},
+    {"name":"currency","data_type":"string","document_required":false,"normalization":"iso-4217","high_risk":false}
+  ],
+  "validation_profile":"financial.tax_invoice.default"
+}
