@@ -1,0 +1,26 @@
+{
+  "id": "POL-004",
+  "title": "Evaluation must retain the configuration version actually used",
+  "capability": "POLICY",
+  "input": {
+    "processing_started_with": {
+      "requirement_profile": "payment-profile",
+      "version": "7",
+      "rule_set": "payment-validation",
+      "rule_set_version": "12"
+    },
+    "later_available": {
+      "requirement_profile_version": "8",
+      "rule_set_version": "13"
+    }
+  },
+  "expected": {
+    "must": [
+      "retain_profile_and_rule_versions_used_for_the_evaluation",
+      "avoid_silent_reinterpretation_of_completed_result_under_new_configuration"
+    ],
+    "may": [
+      "create_new_evaluation_version_using_new_configuration"
+    ]
+  }
+}
