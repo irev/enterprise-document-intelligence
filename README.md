@@ -2,7 +2,7 @@
 
 Enterprise architecture and engineering standards for document classification, extraction, validation, evidence, human review, dataset governance, evaluation, security, and AI-assisted document processing.
 
-> **Status:** Domain and policy execution baseline (v0.5). RFP / Accounts Payable is the first reference use case, not the platform boundary.
+> **Status:** Technology-neutral specification and conformance baseline (v0.6). RFP / Accounts Payable is the first reference use case, not the platform boundary.
 
 ## Core principles
 
@@ -45,6 +45,18 @@ RFP / AP / Procurement / ERP / Audit / other consumers
 ```
 
 AI components provide predictions and evidence. Payment authorization, approval policy, accounting actions, and other privileged business decisions remain deterministic responsibilities of consuming business systems.
+
+## Specification status
+
+This repository is a **technology-neutral specification**, not a reference application. Start with:
+- [Specification scope and requirement language](SPECIFICATION.md)
+- [Normative map](docs/specification/NORMATIVE-MAP.md)
+- [Platform conformance](docs/conformance/PLATFORM-CONFORMANCE.md)
+- [Conformance levels](docs/conformance/CONFORMANCE-LEVELS.md)
+- [Conformance test matrix](docs/conformance/TEST-MATRIX.md)
+- [Versioning & compatibility](docs/interoperability/VERSIONING-AND-COMPATIBILITY.md)
+- [Extension model](docs/interoperability/EXTENSION-MODEL.md)
+- [v0.6 gap analysis](docs/specification/GAP-ANALYSIS-v0.6.md)
 
 ## Specification map
 
@@ -131,7 +143,7 @@ The architecture intentionally does not mandate a specific OCR engine, VLM, LLM,
 
 ## Next specification milestones
 
-The baseline still requires validation against representative corporate documents and business requirements. Next milestones should validate these contracts against representative corporate requirements and add executable reference code/tests, richer nested field schemas (line items/parties), policy AST/operator schema, review API expansion, migration/version-compatibility policy, and a concrete first implementation profile without making that stack part of the platform contract.
+The v0.6 audit identifies the remaining specification gaps explicitly. The next milestone should prioritize the typed policy AST, canonical field-state/evidence-coordinate semantics, reusable structured fields, identity-resolution boundaries, and technology-neutral conformance vectors. Stack-specific reference implementations belong in separate repositories or clearly non-normative profiles.
 
 
 ## AI coding agents
