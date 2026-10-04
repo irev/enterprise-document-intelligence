@@ -1,20 +1,21 @@
 {
   "rule_set_id":"synthetic.invoice-po-reconciliation",
-  "version":"1",
+  "version":"2",
+  "language_version":"1.0",
   "scope":"BUNDLE",
   "rules":[
     {
       "rule_id":"invoice-po-number-match",
       "description":"Invoice PO reference must match the related PO when both are present.",
       "when":{"op":"all_present","paths":["invoice.purchase_order_number","purchase_order.purchase_order_number"]},
-      "assert":{"op":"normalized_equals","left":"invoice.purchase_order_number","right":"purchase_order.purchase_order_number"},
+      "assert":{"op":"normalized_equals","left":{"kind":"path","path":"invoice.purchase_order_number"},"right":{"kind":"path","path":"purchase_order.purchase_order_number"}},
       "finding":{"code":"INVOICE_PO_REFERENCE_MISMATCH","severity":"ERROR","message_key":"invoice.po_reference_mismatch"}
     },
     {
       "rule_id":"invoice-not-over-authoritative-po-remaining",
       "description":"Compare invoice amount to authoritative remaining PO amount supplied by the business system.",
       "when":{"op":"all_present","paths":["invoice.total_amount","business.po_remaining_amount"]},
-      "assert":{"op":"lte","left":"invoice.total_amount","right":"business.po_remaining_amount"},
+      "assert":{"op":"lte","left":{"kind":"path","path":"invoice.total_amount"},"right":{"kind":"path","path":"business.po_remaining_amount"}},
       "finding":{"code":"INVOICE_PO_AMOUNT_MISMATCH","severity":"ERROR","message_key":"invoice.po_amount_mismatch"}
     }
   ]
