@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/confidence/decision-policy.schema.json",
+  "title":"Confidence Decision Policy",
+  "type":"object",
+  "required":["policy_id","version","target","bands"],
+  "properties":{
+    "policy_id":{"type":"string"},"version":{"type":"string"},
+    "target":{"enum":["CLASSIFICATION","FIELD","DOCUMENT","VALIDATION"]},
+    "calibration_ref":{"type":["string","null"]},
+    "bands":{"type":"array","minItems":1,"items":{
+      "type":"object","required":["decision","min_inclusive","max_inclusive"],"properties":{
+        "decision":{"enum":["AUTO_ACCEPT","REVIEW","MANUAL_REQUIRED","ABSTAIN"]},
+        "min_inclusive":{"type":"number","minimum":0,"maximum":1},
+        "max_inclusive":{"type":"number","minimum":0,"maximum":1}
+      },"additionalProperties":false
+    }}
+  },"additionalProperties":false
+}
