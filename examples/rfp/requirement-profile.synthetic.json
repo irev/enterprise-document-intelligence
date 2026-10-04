@@ -1,0 +1,11 @@
+{
+  "profile_id":"rfp.synthetic.vendor-po-payment",
+  "version":"1",
+  "conditions":{"payment_category":"VENDOR","procurement_reference":"PO"},
+  "requirements":[
+    {"document_type":"INVOICE","document_subtype":"COMMERCIAL_INVOICE","requirement":"REQUIRED","minimum_count":1,"condition_ref":null,"reason_code":"PAYMENT_SUPPORT"},
+    {"document_type":"PURCHASE_ORDER","document_subtype":null,"requirement":"REQUIRED","minimum_count":1,"condition_ref":null,"reason_code":"PROCUREMENT_REFERENCE"},
+    {"document_type":"TAX_DOCUMENT","document_subtype":"TAX_INVOICE","requirement":"CONDITIONAL","minimum_count":0,"condition_ref":"tax_applicable","reason_code":"TAX_SUPPORT"},
+    {"document_type":"CONTRACT","document_subtype":null,"requirement":"CONDITIONAL","minimum_count":0,"condition_ref":"contract_required","reason_code":"CONTRACT_SUPPORT"}
+  ]
+}
