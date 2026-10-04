@@ -1,0 +1,35 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Document Bundle",
+  "type":"object",
+  "required":["bundle_id","bundle_version","tenant_id","context","documents"],
+  "properties":{
+    "bundle_id":{"type":"string","minLength":1},
+    "bundle_version":{"type":"integer","minimum":1},
+    "tenant_id":{"type":"string","minLength":1},
+    "context":{
+      "type":"object",
+      "properties":{
+        "business_domain":{"type":["string","null"]},
+        "process":{"type":["string","null"]},
+        "business_reference":{"type":["string","null"]}
+      },
+      "additionalProperties":true
+    },
+    "documents":{
+      "type":"array",
+      "items":{
+        "type":"object",
+        "required":["document_id","processing_version"],
+        "properties":{
+          "document_id":{"type":"string"},
+          "processing_version":{"type":"integer","minimum":1},
+          "role":{"type":["string","null"]}
+        },
+        "additionalProperties":false
+      }
+    },
+    "status":{"enum":["OPEN","READY_FOR_VALIDATION","REVIEW_REQUIRED","COMPLETED","FAILED"]}
+  },
+  "additionalProperties":false
+}
