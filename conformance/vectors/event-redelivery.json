@@ -1,0 +1,6 @@
+{
+  "vector_id":"EVENT-REDELIVERY-001",
+  "specification_area":"events",
+  "input":{"delivery_count":2,"logical_event":"same"},
+  "expected":{"same_event_id":true,"consumer_can_deduplicate":true}
+}
