@@ -48,6 +48,8 @@ An execution plan is a selection record, **not an authorization grant**. Immedia
 
 Plan/provider identity MUST also remain consistent at invocation time: provider identity/version, execution class, and requested capability MUST match the planned step. Implementations MAY use different internal mechanisms, but the observable behavior MUST preserve this fail-closed property.
 
+Application authorization MUST preserve the application's tenant scope. When application identifiers are tenant-local, authorization for one `(tenant, application)` pair MUST NOT authorize an application with the same identifier under another tenant. Implementations MUST NOT flatten tenant-scoped application authorization into a deployment-global application identifier.
+
 ## Fail closed
 
 When no registered provider can satisfy the required capability and execution constraints, the service MUST return an explicit non-success/review outcome. It MUST NOT broaden the allowed execution classes automatically.
