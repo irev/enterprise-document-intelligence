@@ -1,0 +1,15 @@
+{
+  "vector_id":"IDENTITY-001",
+  "specification_area":"entity-resolution",
+  "input":{
+    "observed_vendor_name":"PT Contoh Abadi",
+    "master_candidates":[
+      {"authority":"ERP_VENDOR","entity_id":"V001","display_name":"PT Contoh Abadi"},
+      {"authority":"ERP_VENDOR","entity_id":"V002","display_name":"PT Contoh Abadi Indonesia"}
+    ]
+  },
+  "expected":{
+    "forbidden_behavior":["replace_observed_value_without_provenance","claim_authoritative_identity_without_resolution_policy"],
+    "required_separation":["observed_document_value","authoritative_entity_identity"]
+  }
+}
