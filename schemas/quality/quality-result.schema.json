@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/quality/quality-result.schema.json",
+  "title":"Document Quality Result",
+  "type":"object",
+  "required":["assessor","signals"],
+  "properties":{
+    "assessor":{"type":"object","required":["component","version"],"properties":{"component":{"type":"string"},"version":{"type":"string"}},"additionalProperties":false},
+    "signals":{"type":"array","items":{
+      "type":"object","required":["code","status"],"properties":{
+        "code":{"type":"string"},
+        "status":{"enum":["PASS","WARN","FAIL","UNKNOWN"]},
+        "score":{"type":["number","null"],"minimum":0,"maximum":1},
+        "page":{"type":["integer","null"],"minimum":1},
+        "details":{"type":"object","additionalProperties":true}
+      },"additionalProperties":false
+    }}
+  },"additionalProperties":false
+}
