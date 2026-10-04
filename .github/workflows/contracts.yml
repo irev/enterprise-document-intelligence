@@ -86,8 +86,17 @@ jobs:
           from pathlib import Path
           from jsonschema import Draft202012Validator
 
-          schema=json.loads(Path("schemas/policies/rule-set-v2.schema.json").read_text())
-          validator=Draft202012Validator(schema)
+          from referencing import Registry, Resource
+
+          rule_path=Path("schemas/policies/rule-set-v2.schema.json")
+          expression_path=Path("schemas/policies/expression.schema.json")
+          schema=json.loads(rule_path.read_text())
+          expression=json.loads(expression_path.read_text())
+          registry=Registry().with_resource(
+              expression["$id"],
+              Resource.from_contents(expression),
+          )
+          validator=Draft202012Validator(schema, registry=registry)
           for path in Path("examples/rules").glob("*.json"):
               validator.validate(json.loads(path.read_text()))
               print("OK", path)
