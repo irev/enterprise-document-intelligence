@@ -17,6 +17,8 @@ When the corresponding capability is implemented, durable state MUST cover:
 
 An execution plan is not an authorization snapshot. Invocation-time authorization MUST evaluate current trusted control-plane state as required by the execution-policy contract.
 
+Authorization scope MUST be explicit and fail closed. An empty authorization set MUST NOT be interpreted as unrestricted access unless unrestricted access is represented by a separate explicit state. Removing the final authorized tenant/application from a restricted provider MUST preserve denial rather than broaden access.
+
 ## Processing and integration state
 
 Durable state MUST be used where required to preserve:
