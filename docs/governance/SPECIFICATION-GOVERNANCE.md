@@ -9,6 +9,17 @@
 - **Breaking**: changes existing normative meaning or invalidates previously conforming behavior.
 - **Security correction**: closes a vulnerability/unsafe ambiguity and may require accelerated migration.
 
+## Evidence-driven core evolution
+
+After the v0.9 stabilization candidate, a new normative core concept SHOULD be justified by at least one concrete source of evidence:
+- a representative validation scenario that cannot be expressed correctly;
+- an independent implementation interoperability failure;
+- a security/threat review finding;
+- a portability failure across providers/stacks;
+- a standards/regulatory requirement applicable to the declared profile.
+
+A single customer's local field/workflow preference is normally a profile/configuration concern, not evidence for expanding core.
+
 ## Required change artifacts
 
 Normative changes MUST update affected:
