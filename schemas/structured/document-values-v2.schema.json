@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/structured/document-values-v2.schema.json",
+  "title":"Structured Document Values v2",
+  "$defs":{
+    "money":{"type":"object","required":["amount","currency"],"properties":{"amount":{"type":"number"},"currency":{"type":"string","pattern":"^[A-Z]{3}$"}},"additionalProperties":false},
+    "identifier":{"type":"object","required":["scheme","value"],"properties":{"scheme":{"type":"string"},"value":{"type":"string"},"issuer":{"type":["string","null"]}},"additionalProperties":false},
+    "address":{"type":"object","properties":{"lines":{"type":"array","items":{"type":"string"}},"locality":{"type":["string","null"]},"administrative_area":{"type":["string","null"]},"postal_code":{"type":["string","null"]},"country_code":{"type":["string","null"],"pattern":"^[A-Z]{2}$"}},"additionalProperties":false},
+    "party":{"type":"object","required":["display_name"],"properties":{"display_name":{"type":"string"},"identifiers":{"type":"array","items":{"$ref":"#/$defs/identifier"}},"address":{"oneOf":[{"$ref":"#/$defs/address"},{"type":"null"}]}},"additionalProperties":false},
+    "quantity":{"type":"object","required":["value"],"properties":{"value":{"type":"number"},"unit":{"type":["string","null"]}},"additionalProperties":false},
+    "line_item":{"type":"object","required":["description"],"properties":{"line_id":{"type":["string","null"]},"description":{"type":"string"},"quantity":{"oneOf":[{"$ref":"#/$defs/quantity"},{"type":"null"}]},"unit_price":{"oneOf":[{"$ref":"#/$defs/money"},{"type":"null"}]},"tax_amount":{"oneOf":[{"$ref":"#/$defs/money"},{"type":"null"}]},"line_amount":{"oneOf":[{"$ref":"#/$defs/money"},{"type":"null"}]},"identifiers":{"type":"array","items":{"$ref":"#/$defs/identifier"}}},"additionalProperties":false},
+    "table_cell":{"type":"object","required":["row","column","value"],"properties":{"row":{"type":"integer","minimum":0},"column":{"type":"integer","minimum":0},"row_span":{"type":"integer","minimum":1,"default":1},"column_span":{"type":"integer","minimum":1,"default":1},"header":{"type":"boolean","default":false},"value":{},"evidence_refs":{"type":"array","items":{"type":"string"}}},"additionalProperties":false},
+    "table":{"type":"object","required":["rows","columns","cells"],"properties":{"rows":{"type":"integer","minimum":1},"columns":{"type":"integer","minimum":1},"cells":{"type":"array","items":{"$ref":"#/$defs/table_cell"}}},"additionalProperties":false}
+  }
+}
