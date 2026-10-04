@@ -1,0 +1,34 @@
+{
+  "id": "BND-003",
+  "title": "Cross-document mismatch must retain operand evidence and rule identity",
+  "capability": "BUNDLE",
+  "input": {
+    "left": {
+      "document_id": "doc-invoice",
+      "field": "purchase_reference",
+      "normalized_value": "PO-100",
+      "evidence_ref": "ev-left"
+    },
+    "right": {
+      "document_id": "doc-order",
+      "field": "order_number",
+      "normalized_value": "PO-200",
+      "evidence_ref": "ev-right"
+    },
+    "rule": {
+      "rule_id": "reference-match",
+      "rule_version": "3"
+    }
+  },
+  "expected": {
+    "must": [
+      "emit_mismatch_finding",
+      "retain_left_and_right_operand_provenance",
+      "retain_rule_id_and_version"
+    ],
+    "must_not": [
+      "silently_choose_one_operand",
+      "rewrite_source_values"
+    ]
+  }
+}
