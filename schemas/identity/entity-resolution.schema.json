@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/identity/entity-resolution.schema.json",
+  "title":"Entity Resolution Result",
+  "type":"object",
+  "required":["entity_kind","observed","status","resolver"],
+  "properties":{
+    "entity_kind":{"enum":["ORGANIZATION","PERSON","ACCOUNT","TAX_IDENTITY","OTHER"]},
+    "observed":{"type":"object","required":["value"],"properties":{"value":{},"evidence_refs":{"type":"array","items":{"type":"string"}}},"additionalProperties":false},
+    "status":{"enum":["UNRESOLVED","CANDIDATE","RESOLVED","CONFLICT"]},
+    "candidates":{"type":"array","items":{"type":"object","required":["authority","entity_id","confidence"],"properties":{
+      "authority":{"type":"string"},"entity_id":{"type":"string"},"display_name":{"type":["string","null"]},"confidence":{"type":"number","minimum":0,"maximum":1}
+    },"additionalProperties":false}},
+    "resolved":{"type":["object","null"],"properties":{"authority":{"type":"string"},"entity_id":{"type":"string"},"display_name":{"type":["string","null"]}},"required":["authority","entity_id"],"additionalProperties":false},
+    "resolver":{"type":"object","required":["component","version"],"properties":{"component":{"type":"string"},"version":{"type":"string"}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}
