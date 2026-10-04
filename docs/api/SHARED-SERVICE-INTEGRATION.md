@@ -114,3 +114,12 @@ This distinction prevents an integration outage from being represented as a docu
 Processing and outbound behavior that depends on versioned profiles, policies or integration configuration MUST retain sufficient version identity to reconstruct what configuration was applied.
 
 Completed historical results MUST NOT be silently reinterpreted when application, subscription, profile or policy configuration changes.
+
+
+## Source acquisition boundary
+
+When source documents remain owned by consumer systems, shared-service deployments MUST preserve the SourceReference -> SourceAcquisition -> SourceObservation -> ProcessingRun distinction defined in `docs/source/SOURCE-ACQUISITION.md`.
+
+Consumer authentication and tenant authorization MUST occur before protected connector acquisition. Connector/resource identity does not itself grant authorization.
+
+Operational inbound views SHOULD expose acquisition outcome and content identity metadata without exposing source credentials or raw document content.
