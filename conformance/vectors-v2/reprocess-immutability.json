@@ -1,0 +1,11 @@
+{
+  "vector_id":"CORE-REPROCESS-001",
+  "version":"1",
+  "capability":"CORE",
+  "requirement_refs":["docs/adr/0007-processing-results-are-versioned-and-immutable.md"],
+  "preconditions":["completed result version 1 exists"],
+  "input":{"operation":"reprocess"},
+  "expected":{"prior_result_preserved":true,"new_processing_version":true},
+  "comparison":"SEMANTIC",
+  "notes":null
+}
