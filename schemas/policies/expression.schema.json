@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/policies/expression.schema.json",
+  "title":"Restricted Policy Expression",
+  "$defs":{
+    "literal":{"type":"object","required":["kind","value"],"properties":{"kind":{"const":"literal"},"value":{"type":["string","number","integer","boolean","null"]}},"additionalProperties":false},
+    "path":{"type":"object","required":["kind","path"],"properties":{"kind":{"const":"path"},"path":{"type":"string","pattern":"^[a-zA-Z_][a-zA-Z0-9_.]*$"}},"additionalProperties":false},
+    "operand":{"oneOf":[{"$ref":"#/$defs/literal"},{"$ref":"#/$defs/path"}]},
+    "expression":{
+      "oneOf":[
+        {"type":"object","required":["op","args"],"properties":{"op":{"enum":["and","or"]},"args":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/expression"}}},"additionalProperties":false},
+        {"type":"object","required":["op","arg"],"properties":{"op":{"const":"not"},"arg":{"$ref":"#/$defs/expression"}},"additionalProperties":false},
+        {"type":"object","required":["op","path"],"properties":{"op":{"enum":["present","missing"]},"path":{"type":"string","pattern":"^[a-zA-Z_][a-zA-Z0-9_.]*$"}},"additionalProperties":false},
+        {"type":"object","required":["op","paths"],"properties":{"op":{"enum":["all_present","any_present"]},"paths":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","pattern":"^[a-zA-Z_][a-zA-Z0-9_.]*$"}}},"additionalProperties":false},
+        {"type":"object","required":["op","left","right"],"properties":{"op":{"enum":["equals","normalized_equals","lt","lte","gt","gte"]},"left":{"$ref":"#/$defs/operand"},"right":{"$ref":"#/$defs/operand"}},"additionalProperties":false},
+        {"type":"object","required":["op","value","set"],"properties":{"op":{"const":"in"},"value":{"$ref":"#/$defs/operand"},"set":{"type":"array","minItems":1,"items":{"type":["string","number","integer","boolean","null"]}}},"additionalProperties":false}
+      ]
+    }
+  },
+  "$ref":"#/$defs/expression"
+}
