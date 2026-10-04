@@ -1,0 +1,11 @@
+{
+  "vector_id":"REVIEW-CONFLICT-001",
+  "version":"1",
+  "capability":"REVIEW",
+  "requirement_refs":["docs/human-review/REVIEW-CONCURRENCY.md#contract"],
+  "preconditions":["review version 3 exists"],
+  "input":{"expected_review_version":2,"action":"CORRECT"},
+  "expected":{"mutation_applied":false,"conflict":true},
+  "comparison":"SEMANTIC",
+  "notes":"ETag or another equivalent concurrency mechanism is acceptable."
+}
