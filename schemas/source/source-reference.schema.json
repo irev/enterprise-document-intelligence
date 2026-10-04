@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Source Reference",
+  "type":"object",
+  "required":["method"],
+  "properties":{
+    "method":{"enum":["UPLOAD","SIGNED_URL","CONNECTOR"]},
+    "connector_id":{"type":["string","null"]},
+    "resource_locator":{"type":["string","null"],"maxLength":2048},
+    "external_version":{"type":["string","null"],"maxLength":256},
+    "expected_sha256":{"type":["string","null"],"pattern":"^[A-Fa-f0-9]{64}$"}
+  },
+  "additionalProperties":false
+}
