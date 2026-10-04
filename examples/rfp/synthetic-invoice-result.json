@@ -1,0 +1,16 @@
+{
+  "document_id":"DOC-SYNTHETIC-INVOICE-0001",
+  "schema_version":"1.0",
+  "source":{"filename":"synthetic-invoice.pdf","mime_type":"application/pdf","sha256":"SYNTHETIC_ONLY_NOT_A_REAL_HASH","size_bytes":100000,"page_count":1},
+  "context":{"tenant_id":"tenant_example","business_domain":"ACCOUNTS_PAYABLE","process":"REQUEST_FOR_PAYMENT"},
+  "classification":{"family":"FINANCIAL","type":"INVOICE","subtype":"COMMERCIAL_INVOICE","confidence":0.98,"model_version":"example-classifier-1"},
+  "entities":{
+    "invoice_number":{"raw_value":"INV-EXAMPLE-001","normalized_value":"INV-EXAMPLE-001","confidence":0.97,"evidence":[{"page":1,"text":"Invoice No: INV-EXAMPLE-001","bounding_box":[0.60,0.10,0.90,0.15]}],"extractor":{"model":"example-extractor","version":"1"}},
+    "total_amount":{"raw_value":"Rp 1.250.000,00","normalized_value":1250000,"confidence":0.95,"evidence":[{"page":1,"text":"Total Rp 1.250.000,00","bounding_box":[0.60,0.80,0.90,0.85]}],"extractor":{"model":"example-extractor","version":"1"}}
+  },
+  "quality":{"synthetic":true},
+  "validation":{"status":"REVIEW_REQUIRED","findings":[]},
+  "provenance":{"example_only":true},
+  "review":{},
+  "audit":{}
+}
