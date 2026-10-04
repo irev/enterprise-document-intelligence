@@ -1,0 +1,16 @@
+{
+  "profile_id":"procurement.purchase_order",
+  "version":"0.4.0",
+  "document_type":"PURCHASE_ORDER",
+  "document_subtype":null,
+  "fields":[
+    {"name":"purchase_order_number","data_type":"string","document_required":true,"normalization":"trim-preserve-identifier","high_risk":true},
+    {"name":"issue_date","data_type":"date","document_required":true,"normalization":"iso-8601-date","high_risk":false},
+    {"name":"supplier_name","data_type":"string","document_required":true,"normalization":"organization-name","high_risk":true},
+    {"name":"supplier_identifier","data_type":"string","document_required":false,"normalization":"identifier","high_risk":true},
+    {"name":"currency","data_type":"string","document_required":true,"normalization":"iso-4217","high_risk":true},
+    {"name":"total_amount","data_type":"decimal","document_required":true,"normalization":"decimal","high_risk":true},
+    {"name":"line_items","data_type":"array","document_required":false,"normalization":null,"high_risk":false}
+  ],
+  "validation_profile":"procurement.purchase_order.default"
+}
