@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/integration/outbound-delivery.schema.json",
+  "title": "Outbound Delivery Attempt",
+  "type": "object",
+  "required": ["delivery_id", "message_id", "subscription_id", "tenant_id", "application_id", "correlation_id", "document_id", "result_version", "attempt", "attempted_at", "status"],
+  "properties": {
+    "delivery_id": {"type": "string", "minLength": 1},
+    "message_id": {"type": "string", "minLength": 1},
+    "subscription_id": {"type": "string", "minLength": 1},
+    "tenant_id": {"type": "string", "minLength": 1},
+    "application_id": {"type": "string", "minLength": 1},
+    "correlation_id": {"type": "string", "minLength": 1},
+    "document_id": {"type": "string", "minLength": 1},
+    "result_version": {"type": "string", "minLength": 1},
+    "attempt": {"type": "integer", "minimum": 1},
+    "attempted_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["PENDING", "DELIVERED", "RETRY_PENDING", "FAILED", "CANCELLED"]},
+    "response_status": {"type": ["integer", "null"], "minimum": 100, "maximum": 599},
+    "next_attempt_at": {"type": ["string", "null"], "format": "date-time"},
+    "failure_code": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}
