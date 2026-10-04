@@ -41,7 +41,7 @@
       },"additionalProperties":false},
       {"type":"object","required":["state"],"properties":{
         "state":{"enum":["NOT_PRESENT","ILLEGIBLE","AMBIGUOUS","NOT_APPLICABLE"]},
-        "candidates":{"type":"array","items":{"type":"object","properties":{"raw_value":{},"normalized_value":{},"confidence":{"type":"number","minimum":0,"maximum":1},"evidence":{"type":"array","items":{"$ref":"#/$defs/evidence"}},"additionalProperties":false}},
+        "candidates":{"type":"array","items":{"type":"object","properties":{"raw_value":{},"normalized_value":{},"confidence":{"type":"number","minimum":0,"maximum":1},"evidence":{"type":"array","items":{"$ref":"#/$defs/evidence"}}},"additionalProperties":false}},
         "reason_code":{"type":["string","null"]}
       },"additionalProperties":false}
     ]},
