@@ -126,6 +126,8 @@ jobs:
               "schemas/conformance/report.schema.json",
               "schemas/evaluation/calibration-report.schema.json",
               "schemas/evaluation/release-comparison.schema.json",
+          "schemas/integration/interaction-context.schema.json",
+          "schemas/integration/outbound-delivery.schema.json",
           ]
           for name in paths:
               obj=json.loads(Path(name).read_text())
