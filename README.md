@@ -2,7 +2,7 @@
 
 Enterprise architecture and engineering standards for document classification, extraction, validation, evidence, human review, dataset governance, evaluation, security, and AI-assisted document processing.
 
-> **Status:** Semantic interoperability baseline (v0.7). RFP / Accounts Payable is the first reference use case, not the platform boundary.
+> **Status:** Interoperability completeness baseline (v0.8). RFP / Accounts Payable is the first reference use case, not the platform boundary.
 
 ## Core principles
 
@@ -73,6 +73,13 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [Field State & Evidence Semantics](docs/schemas/FIELD-STATE-AND-EVIDENCE.md)
 - [Entity Resolution Boundary](docs/identity/ENTITY-RESOLUTION.md)
 - [Restricted Policy Expression Language](docs/policy/EXPRESSION-LANGUAGE.md)
+- [Normalization Registry](docs/normalization/NORMALIZATION-REGISTRY.md)
+- [Calibration & Decision Policy](docs/confidence/CALIBRATION-AND-DECISION-POLICY.md)
+- [Containers & Segmentation](docs/ingestion/CONTAINERS-AND-SEGMENTATION.md)
+- [Event Semantics](docs/events/EVENT-SEMANTICS.md)
+- [Integrity & Provenance](docs/security/INTEGRITY-AND-PROVENANCE.md)
+- [Privacy Control Hooks](docs/privacy/PRIVACY-CONTROL-HOOKS.md)
+- [Specification Governance](docs/governance/SPECIFICATION-GOVERNANCE.md)
 - [Validation Rules](docs/validation/VALIDATION-RULES.md)
 
 ### Dataset & evaluation
@@ -110,6 +117,11 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [Canonical document result v2](schemas/canonical/document-result-v2.schema.json)
 - [Common structured values](schemas/structured/common-values.schema.json)
 - [Entity resolution schema](schemas/identity/entity-resolution.schema.json)
+- [Quality result schema](schemas/quality/quality-result.schema.json)
+- [Confidence decision-policy schema](schemas/confidence/decision-policy.schema.json)
+- [Integrity digest schema](schemas/integrity/digest.schema.json)
+- [Document segment schema](schemas/container/document-segment.schema.json)
+- [Specification release manifest schema](schemas/governance/specification-release.schema.json)
 - Concrete profiles: [Invoice](profiles/invoice.profile.json), [Purchase Order](profiles/purchase-order.profile.json), [Contract](profiles/contract.profile.json), [Tax Invoice](profiles/tax-invoice.profile.json)
 
 ### Operations & model governance
@@ -152,7 +164,7 @@ The architecture intentionally does not mandate a specific OCR engine, VLM, LLM,
 
 ## Next specification milestones
 
-The v0.6 audit remains the gap register; v0.7 closes the highest-priority semantic ambiguities without prescribing implementation technology. Next priorities are API/event capability completion, normalization and quality/calibration registries, container/document edge cases, privacy/integrity hooks, richer semantic conformance vectors, and specification governance. Stack-specific implementations belong in separate repositories or explicitly non-normative material.
+The v0.6 audit remains the living gap register. v0.8 closes most cross-stack interoperability gaps around normalization, quality/confidence policy, integrity, segmentation, event semantics, privacy hooks and specification governance. Remaining priority work is richer nested/table structures, optional API capability completion, deeper calibration/quality semantics, and a portable conformance harness protocol. Stack-specific implementations belong in separate repositories or explicitly non-normative material.
 
 
 ## AI coding agents
