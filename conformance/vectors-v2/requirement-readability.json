@@ -1,0 +1,38 @@
+{
+  "vector_id": "POLICY-REQUIREMENT-READABILITY-001",
+  "version": "1",
+  "capability": "POLICY",
+  "requirement_refs": [
+    "docs/reference/RFP-REQUIREMENT-MATRIX.md",
+    "docs/schemas/FIELD-STATE-AND-EVIDENCE.md"
+  ],
+  "input": {
+    "requirement": {
+      "document_type": "TAX_DOCUMENT",
+      "required": true
+    },
+    "candidate": {
+      "present": true,
+      "accessible": true,
+      "classification": {
+        "type": "TAX_DOCUMENT",
+        "confidence": 0.94
+      },
+      "required_material_field": {
+        "state": "ILLEGIBLE"
+      }
+    }
+  },
+  "expected": {
+    "required": [
+      "distinguish_presence_from_readability",
+      "review_or_unsatisfied_according_to_policy"
+    ],
+    "forbidden": [
+      "satisfied_only_because_file_present",
+      "invent_material_value"
+    ]
+  },
+  "comparison": "SEMANTIC",
+  "notes": "Presence alone is insufficient when the profile requires readable material evidence."
+}
