@@ -2,7 +2,7 @@
 
 Enterprise architecture and engineering standards for document classification, extraction, validation, evidence, human review, dataset governance, evaluation, security, and AI-assisted document processing.
 
-> **Status:** Developer-contract baseline (v0.3). RFP / Accounts Payable is the first reference use case, not the platform boundary.
+> **Status:** Implementation-readiness baseline (v0.4). RFP / Accounts Payable is the first reference use case, not the platform boundary.
 
 ## Core principles
 
@@ -80,10 +80,15 @@ AI components provide predictions and evidence. Payment authorization, approval 
 - [Error Taxonomy](docs/api/ERROR-TAXONOMY.md)
 - [Processing State Machine](docs/architecture/PROCESSING-STATE-MACHINE.md)
 - [RFP / Accounts Payable Reference Profile](docs/reference/RFP-REFERENCE-PROFILE.md)
+- [RFP Requirement Matrix](docs/reference/RFP-REQUIREMENT-MATRIX.md)
+- [AsyncAPI 3.0 specification](asyncapi/asyncapi.yaml)
 - [Machine-readable canonical schema](schemas/canonical/document-result.schema.json)
 - [Machine-readable event schema](schemas/events/document-events.schema.json)
 - [Document profile schema](schemas/profiles/document-profile.schema.json)
 - [Dataset manifest schema](schemas/datasets/dataset-manifest.schema.json)
+- [Annotation schema](schemas/annotations/document-annotation.schema.json)
+- [RFP requirement-profile schema](schemas/business/rfp-requirement-profile.schema.json)
+- Concrete profiles: [Invoice](profiles/invoice.profile.json), [Purchase Order](profiles/purchase-order.profile.json), [Contract](profiles/contract.profile.json), [Tax Invoice](profiles/tax-invoice.profile.json)
 
 ### Operations & model governance
 - [Threat Model](docs/security/THREAT-MODEL.md)
@@ -93,6 +98,8 @@ AI components provide predictions and evidence. Payment authorization, approval 
 - [Privacy & Data Classification](docs/governance/PRIVACY-DATA-CLASSIFICATION.md)
 - [Reference Deployment](docs/architecture/REFERENCE-DEPLOYMENT.md)
 - [Evaluation Test Cases](docs/evaluation/TEST-CASES.md)
+- [Implementation Guide](docs/implementation/IMPLEMENTATION-GUIDE.md)
+- [Adapter Contracts](docs/implementation/ADAPTER-CONTRACTS.md)
 
 ### Architecture decisions
 - [ADR-0001 — AI Prediction Is Not a Business Decision](docs/adr/0001-ai-prediction-not-business-decision.md)
@@ -100,6 +107,7 @@ AI components provide predictions and evidence. Payment authorization, approval 
 - [ADR-0003 — UNKNOWN Is a First-Class Classification Outcome](docs/adr/0003-unknown-is-first-class-classification.md)
 - [ADR-0004 — Asynchronous Processing Is the Default Contract](docs/adr/0004-asynchronous-processing-contract.md)
 - [ADR-0005 — Evidence Is Required for Material Extraction](docs/adr/0005-evidence-required-for-material-extraction.md)
+- [ADR-0006 — Tenant Business Requirements Are Versioned Configuration](docs/adr/0006-tenant-business-requirements-are-configuration.md)
 
 ## Dataset policy
 
@@ -111,4 +119,13 @@ The architecture intentionally does not mandate a specific OCR engine, VLM, LLM,
 
 ## Next specification milestones
 
-The baseline still requires validation against representative corporate documents and business requirements. Next milestones should validate these contracts against representative requirements and add executable contract validation in CI, AsyncAPI if event transport is standardized, concrete document profiles, annotation schemas, evaluation harness code, RFP requirement-matrix configuration, and implementation guidance for storage/orchestration/model adapters.
+The baseline still requires validation against representative corporate documents and business requirements. Next milestones should validate these contracts against representative corporate requirements and add executable evaluation harness code, richer profile-specific field schemas, rule DSL/policy contract, persistence model guidance, review API detail, model/provider conformance tests, and deployment/security hardening profiles.
+
+
+## AI coding agents
+
+[AGENTS.md](AGENTS.md) defines mandatory architecture constraints for coding agents. Agents must treat the schemas, API/event specifications, principles, and ADRs as source-of-truth contracts.
+
+## Contract validation
+
+[Contract Validation](.github/workflows/contracts.yml) validates JSON/JSON Schema, concrete profiles, the synthetic RFP requirement profile, OpenAPI, and baseline AsyncAPI structure on relevant pushes and pull requests.
