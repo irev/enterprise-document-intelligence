@@ -2,7 +2,7 @@
 
 Enterprise architecture and engineering standards for document classification, extraction, validation, evidence, human review, dataset governance, evaluation, security, and AI-assisted document processing.
 
-> **Status:** Implementation-readiness baseline (v0.4). RFP / Accounts Payable is the first reference use case, not the platform boundary.
+> **Status:** Domain and policy execution baseline (v0.5). RFP / Accounts Payable is the first reference use case, not the platform boundary.
 
 ## Core principles
 
@@ -88,6 +88,8 @@ AI components provide predictions and evidence. Payment authorization, approval 
 - [Dataset manifest schema](schemas/datasets/dataset-manifest.schema.json)
 - [Annotation schema](schemas/annotations/document-annotation.schema.json)
 - [RFP requirement-profile schema](schemas/business/rfp-requirement-profile.schema.json)
+- [Document bundle schema](schemas/bundles/document-bundle.schema.json)
+- [Deterministic rule-set schema](schemas/policies/rule-set.schema.json)
 - Concrete profiles: [Invoice](profiles/invoice.profile.json), [Purchase Order](profiles/purchase-order.profile.json), [Contract](profiles/contract.profile.json), [Tax Invoice](profiles/tax-invoice.profile.json)
 
 ### Operations & model governance
@@ -99,6 +101,14 @@ AI components provide predictions and evidence. Payment authorization, approval 
 - [Reference Deployment](docs/architecture/REFERENCE-DEPLOYMENT.md)
 - [Evaluation Test Cases](docs/evaluation/TEST-CASES.md)
 - [Implementation Guide](docs/implementation/IMPLEMENTATION-GUIDE.md)
+- [Persistence Model](docs/domain/PERSISTENCE-MODEL.md)
+- [Rule Engine](docs/policy/RULE-ENGINE.md)
+- [Review Concurrency](docs/human-review/REVIEW-CONCURRENCY.md)
+- [Deduplication & Idempotency](docs/ingestion/DEDUPLICATION.md)
+- [Provider Conformance](docs/providers/CONFORMANCE.md)
+- [Evaluation Harness](docs/evaluation/HARNESS.md)
+- [RFP Integration Lifecycle](docs/reference/RFP-INTEGRATION-LIFECYCLE.md)
+- [Security Hardening Profile](docs/security/SECURITY-HARDENING-PROFILE.md)
 - [Adapter Contracts](docs/implementation/ADAPTER-CONTRACTS.md)
 
 ### Architecture decisions
@@ -108,6 +118,8 @@ AI components provide predictions and evidence. Payment authorization, approval 
 - [ADR-0004 — Asynchronous Processing Is the Default Contract](docs/adr/0004-asynchronous-processing-contract.md)
 - [ADR-0005 — Evidence Is Required for Material Extraction](docs/adr/0005-evidence-required-for-material-extraction.md)
 - [ADR-0006 — Tenant Business Requirements Are Versioned Configuration](docs/adr/0006-tenant-business-requirements-are-configuration.md)
+- [ADR-0007 — Completed Processing Results Are Versioned and Immutable](docs/adr/0007-processing-results-are-versioned-and-immutable.md)
+- [ADR-0008 — Tenant Policy Language Is Restricted and Non-Arbitrary](docs/adr/0008-policy-language-is-non-turing-complete.md)
 
 ## Dataset policy
 
@@ -119,7 +131,7 @@ The architecture intentionally does not mandate a specific OCR engine, VLM, LLM,
 
 ## Next specification milestones
 
-The baseline still requires validation against representative corporate documents and business requirements. Next milestones should validate these contracts against representative corporate requirements and add executable evaluation harness code, richer profile-specific field schemas, rule DSL/policy contract, persistence model guidance, review API detail, model/provider conformance tests, and deployment/security hardening profiles.
+The baseline still requires validation against representative corporate documents and business requirements. Next milestones should validate these contracts against representative corporate requirements and add executable reference code/tests, richer nested field schemas (line items/parties), policy AST/operator schema, review API expansion, migration/version-compatibility policy, and a concrete first implementation profile without making that stack part of the platform contract.
 
 
 ## AI coding agents
