@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/structured/common-values.schema.json",
+  "title":"Common Structured Values",
+  "$defs":{
+    "money":{"type":"object","required":["amount","currency"],"properties":{"amount":{"type":"number"},"currency":{"type":"string","pattern":"^[A-Z]{3}$"}},"additionalProperties":false},
+    "party":{"type":"object","required":["display_name"],"properties":{
+      "display_name":{"type":"string"},
+      "identifiers":{"type":"array","items":{"type":"object","required":["scheme","value"],"properties":{"scheme":{"type":"string"},"value":{"type":"string"}},"additionalProperties":false}},
+      "address":{"type":["object","null"],"additionalProperties":true}
+    },"additionalProperties":false},
+    "line_item":{"type":"object","required":["description"],"properties":{
+      "line_number":{"type":["string","integer","null"]},"description":{"type":"string"},"quantity":{"type":["number","null"]},"unit":{"type":["string","null"]},
+      "unit_price":{"oneOf":[{"$ref":"#/$defs/money"},{"type":"null"}]},
+      "line_amount":{"oneOf":[{"$ref":"#/$defs/money"},{"type":"null"}]}
+    },"additionalProperties":false}
+  }
+}
