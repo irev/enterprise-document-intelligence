@@ -107,6 +107,25 @@ jobs:
               print("OK", path)
           PY
 
+      - name: Validate new standalone schemas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema.validators import validator_for
+          paths = [
+              "schemas/quality/quality-result.schema.json",
+              "schemas/confidence/decision-policy.schema.json",
+              "schemas/integrity/digest.schema.json",
+              "schemas/container/document-segment.schema.json",
+              "schemas/governance/specification-release.schema.json",
+          ]
+          for name in paths:
+              obj=json.loads(Path(name).read_text())
+              cls=validator_for(obj); cls.check_schema(obj)
+              print("OK", name)
+          PY
+
       - name: Validate conformance vector JSON
         run: |
           python - <<'PY'
