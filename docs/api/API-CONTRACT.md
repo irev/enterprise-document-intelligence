@@ -9,6 +9,15 @@ This document defines transport-neutral semantics. An implementation may expose 
 
 Accept a document plus controlled business context. Return a stable `document_id` and processing status. Submission should support idempotency keys.
 
+### Reprocess existing observation
+Reprocessing targets a previously observed source revision. When bytes are obtained again, their digest must match the targeted observation or fail explicitly with `SOURCE_CHANGED`.
+
+### Refetch source
+Refetch obtains the current source without silently replacing historical processing provenance.
+
+### Refetch and reprocess
+This operation explicitly permits current source content to differ from prior observations and creates a new processing run against the newly observed content.
+
 ### Get document
 `GET /v1/documents/{document_id}`
 
@@ -50,5 +59,7 @@ Use stable machine codes, for example:
 - `DOCUMENT_NOT_FOUND`
 - `TENANT_ACCESS_DENIED`
 - `REVIEW_CONFLICT`
+- `SOURCE_CHANGED`
+- `SOURCE_UNAVAILABLE`
 
 Do not expose internal prompts, secrets, stack traces, or sensitive extracted content in generic error responses.
