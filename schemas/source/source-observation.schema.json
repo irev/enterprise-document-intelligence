@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Source Observation",
+  "type":"object",
+  "required":["observation_id","acquisition_id","digest","byte_length","detected_media_type","observed_at"],
+  "properties":{
+    "observation_id":{"type":"string","minLength":1},
+    "acquisition_id":{"type":"string","minLength":1},
+    "digest":{"type":"object","required":["algorithm","value"],"properties":{"algorithm":{"const":"sha256"},"value":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"}},"additionalProperties":false},
+    "byte_length":{"type":"integer","minimum":1},
+    "detected_media_type":{"type":"string","minLength":1},
+    "observed_at":{"type":"string","format":"date-time"},
+    "external_version":{"type":["string","null"]},
+    "etag":{"type":["string","null"]},
+    "source_last_modified":{"type":["string","null"],"format":"date-time"},
+    "connector_version":{"type":["string","null"]}
+  },
+  "additionalProperties":false
+}
