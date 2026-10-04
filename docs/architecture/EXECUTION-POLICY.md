@@ -44,6 +44,10 @@ The execution plan SHOULD be recorded before provider invocation and MUST retain
 - fallback decision;
 - provider/model/engine version used for produced claims.
 
+An execution plan is a selection record, **not an authorization grant**. Immediately before invocation, the service MUST re-authorize the selected provider against the current trusted control-plane state. At minimum, execution MUST fail before provider code is invoked when the provider is no longer enabled or is no longer permitted for the requesting tenant or application. A stale plan MUST NOT preserve provider access that has subsequently been revoked.
+
+Plan/provider identity MUST also remain consistent at invocation time: provider identity/version, execution class, and requested capability MUST match the planned step. Implementations MAY use different internal mechanisms, but the observable behavior MUST preserve this fail-closed property.
+
 ## Fail closed
 
 When no registered provider can satisfy the required capability and execution constraints, the service MUST return an explicit non-success/review outcome. It MUST NOT broaden the allowed execution classes automatically.
