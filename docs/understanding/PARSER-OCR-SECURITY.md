@@ -44,3 +44,14 @@ Canonical region coordinates MUST use a declared coordinate system. The referenc
 Page/block identifiers and reading order MUST be deterministic within a completed understanding result. Evidence references MUST remain resolvable to the SourceObservation and page/region from which they were derived.
 
 Layout/table structure and confidence remain observations produced by parsing/OCR; their structural validity MUST NOT be interpreted as authenticity or business validity.
+
+
+## Quality assessment and OCR routing
+
+OCR routing SHOULD be explainable and page-scoped. Implementations SHOULD retain the observable quality signals and reason codes that led to an OCR decision.
+
+A document MAY contain native-text, OCR-derived and mixed pages. OCR output MUST NOT silently replace higher-quality native text without retaining origin/provenance.
+
+Automatic OCR selection SHOULD use multiple relevant quality signals rather than treating a single provider confidence or text-count threshold as universal truth. Borderline/ambiguous quality MUST have an explicit safe outcome such as review or deployment policy fallback.
+
+OCR thresholds are configuration subject to empirical calibration; they are not platform invariants. Document content MUST NOT be able to select an unauthorized OCR provider or override data-egress policy.
