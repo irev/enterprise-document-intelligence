@@ -52,3 +52,18 @@ Temporary document bytes are sensitive untrusted data. Temporary copies MUST hav
 Evidence MUST identify the SourceObservation/result context from which it was derived and MUST NOT depend solely on an ephemeral filesystem path.
 
 If the service does not retain original bytes, historical visual reproduction depends on the source owner retaining the corresponding source revision. Deployment and audit policy MUST make that responsibility explicit.
+
+
+## Reliable processing dispatch
+
+Acceptance persistence and creation of the durable processing intent MUST be atomic, or an implementation MUST provide equivalent semantics that cannot lose an accepted processing request after a crash.
+
+Dispatch MAY be at-least-once. When it is, processing consumers MUST deduplicate using a stable message/processing identity. Queue or event payloads MUST NOT contain source credentials and SHOULD carry references/content identity rather than document bytes.
+
+## Network acquisition security
+
+A managed connector endpoint is control-plane configuration. A data-plane caller MUST NOT be able to turn an authorized connector identifier into an arbitrary network endpoint.
+
+Network acquisition implementations MUST apply destination policy at connection time, including resolution/redirect checks where applicable, bounded transfer size and timeouts. Validation of URL syntax alone is insufficient.
+
+Sensitive URL components, credentials, raw source bytes and provider exception details MUST NOT be emitted to generic logs or audit records.
