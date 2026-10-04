@@ -1,0 +1,40 @@
+{
+  "vector_id": "BUNDLE-CROSS-DOC-EVIDENCE-001",
+  "version": "1",
+  "capability": "BUNDLE",
+  "requirement_refs": [
+    "docs/policy/RULE-ENGINE.md",
+    "docs/conformance/PLATFORM-CONFORMANCE.md#core-requirements"
+  ],
+  "input": {
+    "left": {
+      "document_id": "doc-invoice",
+      "field": "purchase_reference",
+      "normalized_value": "PO-100",
+      "evidence_ref": "ev-left"
+    },
+    "right": {
+      "document_id": "doc-order",
+      "field": "order_number",
+      "normalized_value": "PO-200",
+      "evidence_ref": "ev-right"
+    },
+    "rule": {
+      "rule_id": "reference-match",
+      "rule_version": "3"
+    }
+  },
+  "expected": {
+    "required": [
+      "mismatch_finding",
+      "both_operand_provenance",
+      "rule_identity_and_version"
+    ],
+    "forbidden": [
+      "silently_choose_operand",
+      "rewrite_source_value"
+    ]
+  },
+  "comparison": "SEMANTIC",
+  "notes": "A reconciliation finding must be reconstructable from both operands and the applied rule."
+}
