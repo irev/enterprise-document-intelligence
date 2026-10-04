@@ -67,3 +67,14 @@ A managed connector endpoint is control-plane configuration. A data-plane caller
 Network acquisition implementations MUST apply destination policy at connection time, including resolution/redirect checks where applicable, bounded transfer size and timeouts. Validation of URL syntax alone is insufficient.
 
 Sensitive URL components, credentials, raw source bytes and provider exception details MUST NOT be emitted to generic logs or audit records.
+
+
+## Processing consumer reliability
+
+When dispatch is at-least-once, redelivery of the same logical processing message MUST NOT create duplicate completed processing results.
+
+The implementation MUST use stable message identity and an atomic claim/deduplication mechanism. If processing leases are used, active leases MUST prevent concurrent execution and expired leases MAY be reclaimed without silently changing the logical processing identity.
+
+Messages received from an internal broker MUST still be validated as transport input. Message types and content-reference forms MUST be allow-listed/validated before processing.
+
+Provider exception details MUST NOT become durable public failure messages. Stable failure codes SHOULD be used for operational state while sensitive diagnostics remain access-controlled.
