@@ -84,7 +84,7 @@ jobs:
           from pathlib import Path
           from jsonschema import Draft202012Validator
 
-          schema=json.loads(Path("schemas/policies/rule-set.schema.json").read_text())
+          schema=json.loads(Path("schemas/policies/rule-set-v2.schema.json").read_text())
           validator=Draft202012Validator(schema)
           for path in Path("examples/rules").glob("*.json"):
               validator.validate(json.loads(path.read_text()))
@@ -104,6 +104,16 @@ jobs:
               for line_no,line in enumerate(path.read_text().splitlines(),1):
                   if line.strip():
                       validator.validate(json.loads(line))
+              print("OK", path)
+          PY
+
+      - name: Validate conformance vector JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for path in Path("conformance/vectors").glob("*.json"):
+              json.loads(path.read_text())
               print("OK", path)
           PY
 
