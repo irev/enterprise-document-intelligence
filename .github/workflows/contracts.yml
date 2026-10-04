@@ -119,6 +119,11 @@ jobs:
               "schemas/integrity/digest.schema.json",
               "schemas/container/document-segment.schema.json",
               "schemas/governance/specification-release.schema.json",
+              "schemas/structured/document-values-v2.schema.json",
+              "schemas/conformance/test-vector.schema.json",
+              "schemas/conformance/report.schema.json",
+              "schemas/evaluation/calibration-report.schema.json",
+              "schemas/evaluation/release-comparison.schema.json",
           ]
           for name in paths:
               obj=json.loads(Path(name).read_text())
@@ -133,6 +138,19 @@ jobs:
           from pathlib import Path
           for path in Path("conformance/vectors").glob("*.json"):
               json.loads(path.read_text())
+              print("OK", path)
+          PY
+
+      - name: Validate v2 conformance vectors
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+          schema=json.loads(Path("schemas/conformance/test-vector.schema.json").read_text())
+          validator=Draft202012Validator(schema)
+          for path in Path("conformance/vectors-v2").glob("*.json"):
+              validator.validate(json.loads(path.read_text()))
               print("OK", path)
           PY
 
