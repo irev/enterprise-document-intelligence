@@ -34,3 +34,9 @@ This pack validates the v0.9 specification against representative synthetic Requ
 | RFP-016 | Same bytes uploaded for different RFP submissions | source vs logical identity |
 
 See `scenarios.synthetic.json` and `VALIDATION-REPORT.md`.
+
+## Private-source validation
+
+Representative confidential enterprise blueprints MAY be used as private evidence to challenge the specification. Private source files and source-identifying details MUST NOT be committed.
+
+Repository artifacts derived from private validation MUST be source-anonymous and limited to generalized requirements, architecture findings, profiles, or conformance vectors. See `PRIVATE-BLUEPRINT-VALIDATION.md` for the first anonymous walkthrough.
