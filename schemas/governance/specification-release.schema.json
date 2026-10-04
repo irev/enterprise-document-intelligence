@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/governance/specification-release.schema.json",
+  "title":"Specification Release Manifest",
+  "type":"object",
+  "required":["specification_version","released_at","contracts"],
+  "properties":{
+    "specification_version":{"type":"string"},
+    "released_at":{"type":"string","format":"date-time"},
+    "contracts":{"type":"object","additionalProperties":{"type":"string"}},
+    "taxonomy_version":{"type":["string","null"]},
+    "notes":{"type":["string","null"]}
+  },"additionalProperties":false
+}
