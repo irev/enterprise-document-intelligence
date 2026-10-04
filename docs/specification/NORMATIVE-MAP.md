@@ -10,6 +10,7 @@ This map prevents guidance/examples from accidentally becoming mandatory archite
 - `docs/interoperability/*`
 - applicable security/tenant/audit invariants
 - applicable ADR constraints
+- `docs/api/SHARED-SERVICE-INTEGRATION.md` when SHARED_SERVICE capability is claimed
 
 ## Machine-readable normative contracts
 
