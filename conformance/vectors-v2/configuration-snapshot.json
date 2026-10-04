@@ -1,0 +1,32 @@
+{
+  "vector_id": "POLICY-CONFIG-SNAPSHOT-001",
+  "version": "1",
+  "capability": "POLICY",
+  "requirement_refs": [
+    "docs/interoperability/VERSIONING-AND-COMPATIBILITY.md",
+    "docs/conformance/PLATFORM-CONFORMANCE.md#core-requirements"
+  ],
+  "input": {
+    "evaluation_used": {
+      "requirement_profile": "payment-profile",
+      "profile_version": "7",
+      "rule_set": "payment-validation",
+      "rule_set_version": "12"
+    },
+    "later_available": {
+      "profile_version": "8",
+      "rule_set_version": "13"
+    }
+  },
+  "expected": {
+    "required": [
+      "retain_versions_used_by_completed_evaluation",
+      "no_silent_reinterpretation"
+    ],
+    "permitted": [
+      "new_evaluation_version_with_new_configuration"
+    ]
+  },
+  "comparison": "SEMANTIC",
+  "notes": "Completed evaluation provenance remains tied to the configuration actually used."
+}
