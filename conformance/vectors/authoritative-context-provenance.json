@@ -1,0 +1,32 @@
+{
+  "id": "CTX-001",
+  "title": "Observed value must remain distinct from authoritative context",
+  "capability": "CORE",
+  "input": {
+    "observed_document_value": {
+      "field": "party_name",
+      "value": "Example Trading Co.",
+      "evidence_ref": "ev-1"
+    },
+    "resolved_identity": {
+      "status": "CANDIDATE",
+      "candidate_id": "party-17"
+    },
+    "authoritative_context": {
+      "party_id": "party-42",
+      "source": "authoritative-master",
+      "version": "2026-10-01"
+    }
+  },
+  "expected": {
+    "must": [
+      "preserve_observed_value_with_evidence",
+      "identify_authoritative_value_source_and_version",
+      "report_identity_or_value_mismatch_without_silent_substitution"
+    ],
+    "must_not": [
+      "replace_observed_value_with_authoritative_value_as_if_extracted",
+      "treat_candidate_resolution_as_authoritative_identity"
+    ]
+  }
+}
