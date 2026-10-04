@@ -1,0 +1,30 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/document-result.schema.json",
+  "title":"Canonical Document Result",
+  "type":"object",
+  "required":["document_id","schema_version","source","context","classification","entities","validation","provenance"],
+  "properties":{
+    "document_id":{"type":"string","minLength":1},
+    "schema_version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+$"},
+    "source":{"$ref":"#/$defs/source"},
+    "context":{"$ref":"#/$defs/context"},
+    "classification":{"$ref":"#/$defs/classification"},
+    "entities":{"type":"object","additionalProperties":{"$ref":"#/$defs/field"}},
+    "quality":{"type":"object","additionalProperties":true},
+    "validation":{"$ref":"#/$defs/validation"},
+    "provenance":{"type":"object","additionalProperties":true},
+    "review":{"type":"object","additionalProperties":true},
+    "audit":{"type":"object","additionalProperties":true}
+  },
+  "additionalProperties":false,
+  "$defs":{
+    "source":{"type":"object","required":["filename","mime_type","sha256"],"properties":{"filename":{"type":"string"},"mime_type":{"type":"string"},"sha256":{"type":"string"},"size_bytes":{"type":"integer","minimum":0},"page_count":{"type":"integer","minimum":1}},"additionalProperties":false},
+    "context":{"type":"object","required":["tenant_id"],"properties":{"tenant_id":{"type":"string","minLength":1},"business_domain":{"type":["string","null"]},"process":{"type":["string","null"]}},"additionalProperties":false},
+    "classification":{"type":"object","required":["family","type","confidence","model_version"],"properties":{"family":{"type":"string"},"type":{"type":"string"},"subtype":{"type":["string","null"]},"confidence":{"type":"number","minimum":0,"maximum":1},"model_version":{"type":"string"}},"additionalProperties":false},
+    "evidence":{"type":"object","required":["page"],"properties":{"page":{"type":"integer","minimum":1},"text":{"type":["string","null"]},"bounding_box":{"type":["array","null"],"prefixItems":[{"type":"number"},{"type":"number"},{"type":"number"},{"type":"number"}],"minItems":4,"maxItems":4}},"additionalProperties":false},
+    "field":{"type":"object","required":["raw_value","normalized_value","confidence","evidence"],"properties":{"raw_value":{},"normalized_value":{},"confidence":{"type":"number","minimum":0,"maximum":1},"evidence":{"type":"array","items":{"$ref":"#/$defs/evidence"}},"extractor":{"type":"object","additionalProperties":true}},"additionalProperties":false},
+    "finding":{"type":"object","required":["code","severity","source"],"properties":{"code":{"type":"string"},"severity":{"enum":["INFO","WARNING","ERROR","BLOCKING"]},"message":{"type":["string","null"]},"source":{"type":"string"},"rule_version":{"type":["string","null"]},"documents":{"type":"array","items":{"type":"string"}}},"additionalProperties":true},
+    "validation":{"type":"object","required":["status","findings"],"properties":{"status":{"enum":["VALID","REVIEW_REQUIRED","INVALID","UNSUPPORTED"]},"findings":{"type":"array","items":{"$ref":"#/$defs/finding"}}},"additionalProperties":false}
+  }
+}
