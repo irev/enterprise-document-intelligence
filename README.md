@@ -2,7 +2,7 @@
 
 Enterprise architecture and engineering standards for document classification, extraction, validation, evidence, human review, dataset governance, evaluation, security, and AI-assisted document processing.
 
-> **Status:** Technology-neutral specification and conformance baseline (v0.6). RFP / Accounts Payable is the first reference use case, not the platform boundary.
+> **Status:** Semantic interoperability baseline (v0.7). RFP / Accounts Payable is the first reference use case, not the platform boundary.
 
 ## Core principles
 
@@ -70,6 +70,9 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [Document Taxonomy](docs/taxonomy/DOCUMENT-TAXONOMY.md)
 - [Canonical Document Schema](docs/schemas/CANONICAL-DOCUMENT-SCHEMA.md)
 - [Field Schemas](docs/schemas/FIELD-SCHEMAS.md)
+- [Field State & Evidence Semantics](docs/schemas/FIELD-STATE-AND-EVIDENCE.md)
+- [Entity Resolution Boundary](docs/identity/ENTITY-RESOLUTION.md)
+- [Restricted Policy Expression Language](docs/policy/EXPRESSION-LANGUAGE.md)
 - [Validation Rules](docs/validation/VALIDATION-RULES.md)
 
 ### Dataset & evaluation
@@ -101,7 +104,12 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [Annotation schema](schemas/annotations/document-annotation.schema.json)
 - [RFP requirement-profile schema](schemas/business/rfp-requirement-profile.schema.json)
 - [Document bundle schema](schemas/bundles/document-bundle.schema.json)
-- [Deterministic rule-set schema](schemas/policies/rule-set.schema.json)
+- [Legacy deterministic rule-set schema](schemas/policies/rule-set.schema.json)
+- [Restricted policy expression schema](schemas/policies/expression.schema.json)
+- [Rule-set v2 schema](schemas/policies/rule-set-v2.schema.json)
+- [Canonical document result v2](schemas/canonical/document-result-v2.schema.json)
+- [Common structured values](schemas/structured/common-values.schema.json)
+- [Entity resolution schema](schemas/identity/entity-resolution.schema.json)
 - Concrete profiles: [Invoice](profiles/invoice.profile.json), [Purchase Order](profiles/purchase-order.profile.json), [Contract](profiles/contract.profile.json), [Tax Invoice](profiles/tax-invoice.profile.json)
 
 ### Operations & model governance
@@ -132,6 +140,7 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [ADR-0006 — Tenant Business Requirements Are Versioned Configuration](docs/adr/0006-tenant-business-requirements-are-configuration.md)
 - [ADR-0007 — Completed Processing Results Are Versioned and Immutable](docs/adr/0007-processing-results-are-versioned-and-immutable.md)
 - [ADR-0008 — Tenant Policy Language Is Restricted and Non-Arbitrary](docs/adr/0008-policy-language-is-non-turing-complete.md)
+- [ADR-0009 — Canonical v2 Explicit Field State and Coordinate Space](docs/adr/0009-canonical-v2-explicit-field-state-and-coordinate-space.md)
 
 ## Dataset policy
 
@@ -143,7 +152,7 @@ The architecture intentionally does not mandate a specific OCR engine, VLM, LLM,
 
 ## Next specification milestones
 
-The v0.6 audit identifies the remaining specification gaps explicitly. The next milestone should prioritize the typed policy AST, canonical field-state/evidence-coordinate semantics, reusable structured fields, identity-resolution boundaries, and technology-neutral conformance vectors. Stack-specific reference implementations belong in separate repositories or clearly non-normative profiles.
+The v0.6 audit remains the gap register; v0.7 closes the highest-priority semantic ambiguities without prescribing implementation technology. Next priorities are API/event capability completion, normalization and quality/calibration registries, container/document edge cases, privacy/integrity hooks, richer semantic conformance vectors, and specification governance. Stack-specific implementations belong in separate repositories or explicitly non-normative material.
 
 
 ## AI coding agents
