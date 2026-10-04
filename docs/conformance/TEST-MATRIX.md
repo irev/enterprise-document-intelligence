@@ -14,6 +14,7 @@
 | SEC-003 | CORE | planned provider disabled after planning but before invocation | fail closed before provider code executes |
 | SEC-004 | CORE | tenant/application provider authorization revoked after planning | fail closed before provider code executes |
 | SEC-005 | CORE | planned provider identity/version, execution class, or capability differs at invocation | reject invocation; do not substitute or broaden execution |
+| SEC-006 | CORE | final authorization entry removed from a restricted provider scope | access remains denied; empty authorization MUST NOT become unrestricted |
 | REV-001 | REVIEW | reviewer correction | machine prediction preserved; correction appended with provenance |
 | REV-002 | REVIEW | stale concurrent review | lost update prevented/conflict surfaced |
 | BND-001 | BUNDLE | bundle changes | new bundle version/evaluation; historical provenance preserved |
