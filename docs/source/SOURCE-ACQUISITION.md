@@ -78,3 +78,16 @@ The implementation MUST use stable message identity and an atomic claim/deduplic
 Messages received from an internal broker MUST still be validated as transport input. Message types and content-reference forms MUST be allow-listed/validated before processing.
 
 Provider exception details MUST NOT become durable public failure messages. Stable failure codes SHOULD be used for operational state while sensitive diagnostics remain access-controlled.
+
+
+## Observation authorization and lineage
+
+A SourceObservation identifier MUST NOT be treated as an authorization capability. Every read, reprocess, refetch and processing-run binding MUST enforce the authorized tenant/resource scope.
+
+Each ProcessingRun MUST remain bound to the exact SourceObservation it processed. Historical runs MUST NOT be rebound when an external resource changes.
+
+Implementations MUST prevent content digests from becoming cross-tenant existence or deduplication oracles. Digest lookup and duplicate handling MUST preserve tenant isolation.
+
+REFETCH with unchanged content MAY reuse the same logical observation while retaining a separate acquisition audit record. Changed content MUST resolve to a distinct observation identity for that logical document before new processing is created.
+
+External version identifiers, ETags and timestamps are provenance metadata; they MUST NOT override a mismatch in cryptographic content identity.
