@@ -1,0 +1,20 @@
+{
+  "profile_id":"financial.invoice.commercial",
+  "version":"0.4.0",
+  "document_type":"INVOICE",
+  "document_subtype":"COMMERCIAL_INVOICE",
+  "fields":[
+    {"name":"invoice_number","data_type":"string","document_required":true,"normalization":"trim-preserve-identifier","high_risk":true},
+    {"name":"invoice_date","data_type":"date","document_required":true,"normalization":"iso-8601-date","high_risk":true},
+    {"name":"due_date","data_type":"date","document_required":false,"normalization":"iso-8601-date","high_risk":false},
+    {"name":"vendor_name","data_type":"string","document_required":true,"normalization":"organization-name","high_risk":true},
+    {"name":"vendor_identifier","data_type":"string","document_required":false,"normalization":"identifier","high_risk":true},
+    {"name":"purchase_order_number","data_type":"string","document_required":false,"normalization":"trim-preserve-identifier","high_risk":true},
+    {"name":"currency","data_type":"string","document_required":true,"normalization":"iso-4217","high_risk":true},
+    {"name":"subtotal","data_type":"decimal","document_required":false,"normalization":"decimal","high_risk":true},
+    {"name":"tax_amount","data_type":"decimal","document_required":false,"normalization":"decimal","high_risk":true},
+    {"name":"total_amount","data_type":"decimal","document_required":true,"normalization":"decimal","high_risk":true},
+    {"name":"line_items","data_type":"array","document_required":false,"normalization":null,"high_risk":false}
+  ],
+  "validation_profile":"financial.invoice.default"
+}
