@@ -2,7 +2,7 @@
 
 Enterprise architecture and engineering standards for document classification, extraction, validation, evidence, human review, dataset governance, evaluation, security, and AI-assisted document processing.
 
-> **Status:** Interoperability completeness baseline (v0.8). RFP / Accounts Payable is the first reference use case, not the platform boundary.
+> **Status:** Contract-complete stabilization candidate (v0.9). RFP / Accounts Payable is the first reference use case, not the platform boundary.
 
 ## Core principles
 
@@ -80,6 +80,10 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [Integrity & Provenance](docs/security/INTEGRITY-AND-PROVENANCE.md)
 - [Privacy Control Hooks](docs/privacy/PRIVACY-CONTROL-HOOKS.md)
 - [Specification Governance](docs/governance/SPECIFICATION-GOVERNANCE.md)
+- [Structured Values & Tables](docs/schemas/STRUCTURED-VALUES.md)
+- [Optional API Capability Contracts](docs/api/CAPABILITY-CONTRACTS.md)
+- [Portable Conformance Harness Protocol](docs/conformance/HARNESS-PROTOCOL.md)
+- [Calibration & Release Gates](docs/evaluation/CALIBRATION-AND-RELEASE-GATES.md)
 - [Validation Rules](docs/validation/VALIDATION-RULES.md)
 
 ### Dataset & evaluation
@@ -122,6 +126,11 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [Integrity digest schema](schemas/integrity/digest.schema.json)
 - [Document segment schema](schemas/container/document-segment.schema.json)
 - [Specification release manifest schema](schemas/governance/specification-release.schema.json)
+- [Structured document values v2](schemas/structured/document-values-v2.schema.json)
+- [Conformance test-vector schema](schemas/conformance/test-vector.schema.json)
+- [Conformance report schema](schemas/conformance/report.schema.json)
+- [Calibration report schema](schemas/evaluation/calibration-report.schema.json)
+- [Release comparison schema](schemas/evaluation/release-comparison.schema.json)
 - Concrete profiles: [Invoice](profiles/invoice.profile.json), [Purchase Order](profiles/purchase-order.profile.json), [Contract](profiles/contract.profile.json), [Tax Invoice](profiles/tax-invoice.profile.json)
 
 ### Operations & model governance
@@ -153,6 +162,7 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [ADR-0007 — Completed Processing Results Are Versioned and Immutable](docs/adr/0007-processing-results-are-versioned-and-immutable.md)
 - [ADR-0008 — Tenant Policy Language Is Restricted and Non-Arbitrary](docs/adr/0008-policy-language-is-non-turing-complete.md)
 - [ADR-0009 — Canonical v2 Explicit Field State and Coordinate Space](docs/adr/0009-canonical-v2-explicit-field-state-and-coordinate-space.md)
+- [ADR-0010 — Conformance Is Behavioral, Not Implementation-Specific](docs/adr/0010-conformance-is-behavioral-not-implementation-specific.md)
 
 ## Dataset policy
 
@@ -164,7 +174,7 @@ The architecture intentionally does not mandate a specific OCR engine, VLM, LLM,
 
 ## Next specification milestones
 
-The v0.6 audit remains the living gap register. v0.8 closes most cross-stack interoperability gaps around normalization, quality/confidence policy, integrity, segmentation, event semantics, privacy hooks and specification governance. Remaining priority work is richer nested/table structures, optional API capability completion, deeper calibration/quality semantics, and a portable conformance harness protocol. Stack-specific implementations belong in separate repositories or explicitly non-normative material.
+The v0.6 audit remains the historical gap register. v0.9 addresses its priority contract gaps and is a stabilization candidate. Further core expansion should be evidence-driven by representative corporate/RFP validation, independent implementations, security review, or observed interoperability failures. Stack-specific implementations belong in separate repositories or explicitly non-normative material.
 
 
 ## AI coding agents
