@@ -2,7 +2,7 @@
 
 Enterprise architecture and engineering standards for document classification, extraction, validation, evidence, human review, dataset governance, evaluation, security, and AI-assisted document processing.
 
-> **Status:** Architecture and executable-contract baseline (v0.2). RFP / Accounts Payable is the first reference use case, not the platform boundary.
+> **Status:** Developer-contract baseline (v0.3). RFP / Accounts Payable is the first reference use case, not the platform boundary.
 
 ## Core principles
 
@@ -73,23 +73,33 @@ AI components provide predictions and evidence. Payment authorization, approval 
 - [Auditability](docs/governance/AUDITABILITY.md)
 - [Multi-Tenancy](docs/governance/MULTI-TENANCY.md)
 
-### API, events & reference use case
+### API, events & processing contracts
+- [OpenAPI 3.1 specification](openapi/openapi.yaml)
 - [API Contract](docs/api/API-CONTRACT.md)
 - [Event Contract](docs/api/EVENT-CONTRACT.md)
+- [Error Taxonomy](docs/api/ERROR-TAXONOMY.md)
+- [Processing State Machine](docs/architecture/PROCESSING-STATE-MACHINE.md)
 - [RFP / Accounts Payable Reference Profile](docs/reference/RFP-REFERENCE-PROFILE.md)
 - [Machine-readable canonical schema](schemas/canonical/document-result.schema.json)
 - [Machine-readable event schema](schemas/events/document-events.schema.json)
+- [Document profile schema](schemas/profiles/document-profile.schema.json)
+- [Dataset manifest schema](schemas/datasets/dataset-manifest.schema.json)
 
 ### Operations & model governance
 - [Threat Model](docs/security/THREAT-MODEL.md)
 - [Observability & SLO](docs/operations/OBSERVABILITY-SLO.md)
 - [Model Lifecycle](docs/models/MODEL-LIFECYCLE.md)
 - [Data Retention](docs/governance/DATA-RETENTION.md)
+- [Privacy & Data Classification](docs/governance/PRIVACY-DATA-CLASSIFICATION.md)
+- [Reference Deployment](docs/architecture/REFERENCE-DEPLOYMENT.md)
+- [Evaluation Test Cases](docs/evaluation/TEST-CASES.md)
 
 ### Architecture decisions
 - [ADR-0001 — AI Prediction Is Not a Business Decision](docs/adr/0001-ai-prediction-not-business-decision.md)
 - [ADR-0002 — Separate Canonical, Dataset, and Prompt Contracts](docs/adr/0002-separate-canonical-dataset-and-prompt-contracts.md)
 - [ADR-0003 — UNKNOWN Is a First-Class Classification Outcome](docs/adr/0003-unknown-is-first-class-classification.md)
+- [ADR-0004 — Asynchronous Processing Is the Default Contract](docs/adr/0004-asynchronous-processing-contract.md)
+- [ADR-0005 — Evidence Is Required for Material Extraction](docs/adr/0005-evidence-required-for-material-extraction.md)
 
 ## Dataset policy
 
@@ -101,4 +111,4 @@ The architecture intentionally does not mandate a specific OCR engine, VLM, LLM,
 
 ## Next specification milestones
 
-The baseline still requires validation against representative corporate documents and business requirements. Next milestones should validate these contracts against representative requirements and add document-profile schemas, annotation/dataset manifests, executable schema validation, API specification (OpenAPI/AsyncAPI if selected), evaluation harness fixtures, privacy classification, and deployment reference architecture.
+The baseline still requires validation against representative corporate documents and business requirements. Next milestones should validate these contracts against representative requirements and add executable contract validation in CI, AsyncAPI if event transport is standardized, concrete document profiles, annotation schemas, evaluation harness code, RFP requirement-matrix configuration, and implementation guidance for storage/orchestration/model adapters.
