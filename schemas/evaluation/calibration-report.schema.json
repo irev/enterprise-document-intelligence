@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/evaluation/calibration-report.schema.json",
+  "title":"Calibration Report",
+  "type":"object",
+  "required":["report_id","model_release","target","dataset_ref","segments","metrics"],
+  "properties":{
+    "report_id":{"type":"string"},
+    "model_release":{"type":"string"},
+    "target":{"enum":["CLASSIFICATION","FIELD","DOCUMENT","VALIDATION"]},
+    "dataset_ref":{"type":"string"},
+    "method":{"type":["string","null"]},
+    "segments":{"type":"array","items":{"type":"string"}},
+    "metrics":{"type":"object","properties":{
+      "ece":{"type":["number","null"],"minimum":0},
+      "brier_score":{"type":["number","null"],"minimum":0},
+      "nll":{"type":["number","null"],"minimum":0}
+    },"additionalProperties":true},
+    "notes":{"type":["string","null"]}
+  },"additionalProperties":false
+}
