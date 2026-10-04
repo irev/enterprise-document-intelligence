@@ -1,0 +1,33 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"RFP Document Requirement Profile",
+  "description":"Tenant-configurable requirement policy. This is not part of document taxonomy.",
+  "type":"object",
+  "required":["profile_id","version","conditions","requirements"],
+  "properties":{
+    "profile_id":{"type":"string"},
+    "version":{"type":"string"},
+    "conditions":{
+      "type":"object",
+      "description":"Business attributes supplied by the authoritative RFP system.",
+      "additionalProperties":{"type":["string","number","boolean","null"]}
+    },
+    "requirements":{
+      "type":"array",
+      "items":{
+        "type":"object",
+        "required":["document_type","requirement"],
+        "properties":{
+          "document_type":{"type":"string"},
+          "document_subtype":{"type":["string","null"]},
+          "requirement":{"enum":["REQUIRED","OPTIONAL","CONDITIONAL","NOT_ALLOWED"]},
+          "minimum_count":{"type":"integer","minimum":0,"default":0},
+          "condition_ref":{"type":["string","null"]},
+          "reason_code":{"type":["string","null"]}
+        },
+        "additionalProperties":false
+      }
+    }
+  },
+  "additionalProperties":false
+}
