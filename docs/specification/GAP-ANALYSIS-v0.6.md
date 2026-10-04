@@ -29,7 +29,7 @@ A four-number bounding box is present but units/origin/rotation/page-coordinate 
 
 Required next: define normalized coordinate convention or explicit coordinate-space metadata.
 
-### G4 — Nested structured fields are weak — PARTIALLY ADDRESSED IN v0.7
+### G4 — Nested structured fields are weak — PARTIALLY ADDRESSED IN v0.7 — ADDRESSED IN v0.9
 Invoice line items, parties, addresses, bank/tax identity and table cells are typed only as generic array/object in profiles.
 
 Required next: reusable structured-value schemas and evidence semantics for nested/table values.
@@ -39,7 +39,7 @@ Extracted vendor text and authoritative vendor/master identity are different con
 
 Required next: candidate identity, resolved identity, resolver provenance, match confidence and authoritative-source boundary.
 
-### G6 — API capability is incomplete
+### G6 — API capability is incomplete — ADDRESSED AT SEMANTIC CAPABILITY LEVEL IN v0.9
 OpenAPI covers individual document submission/result/review but not bundle lifecycle, requirement evaluation, reprocessing/version selection, or richer review concurrency.
 
 Required next: extend only as optional capability contracts, not mandatory REST architecture.
@@ -63,10 +63,10 @@ Need normative behavior/profile hooks for multi-document PDFs, attachments, pass
 ### G11 — Localization and normalization registry — ADDRESSED IN v0.8
 Currency/date exist conceptually, but locale-dependent numbers, identifiers, Unicode normalization, language/script and timezone/date-only semantics need a registry.
 
-### G12 — Quality and confidence contracts are too open — PARTIALLY ADDRESSED IN v0.8
+### G12 — Quality and confidence contracts are too open — PARTIALLY ADDRESSED IN v0.8 — ADDRESSED IN v0.9
 `quality` and provenance are generic objects; confidence calibration is documented but machine-readable calibration/decision-policy identity is absent.
 
-### G13 — Conformance tests are inventory, not executable — PARTIALLY ADDRESSED IN v0.7
+### G13 — Conformance tests are inventory, not executable — PARTIALLY ADDRESSED IN v0.7 — ADDRESSED AT PORTABLE PROTOCOL LEVEL IN v0.9
 Current CI validates schema syntax/examples but does not test implementation behavior.
 
 Required next: technology-neutral test vectors with request/input + expected semantic outcome; implementations provide their own runner/adaptor.
@@ -104,3 +104,10 @@ Highest-priority remaining gaps after v0.8:
 - G6 optional REST/API capability is incomplete for bundles, reprocessing/version selection and review concurrency;
 - G12 calibration/quality semantics need deeper test vectors and registry discipline;
 - G13 conformance vectors remain data fixtures rather than a portable executable harness protocol.
+
+
+## v0.9 audit update
+
+v0.9 completes the previously identified priority contract gaps with reusable structured values, transport-neutral API capability semantics, portable conformance vector/report contracts, calibration/release-gate contracts, and behavioral-conformance ADR-0010.
+
+At this point the repository SHOULD enter validation/stabilization rather than continue adding broad core scope. New normative concepts SHOULD be driven by evidence from representative RFP/AP document sets, independent implementation attempts, security review, or interoperability failures.
