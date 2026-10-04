@@ -1,0 +1,34 @@
+# Corporate documents / local corpora
+data/
+raw/
+corpus/
+documents/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Models/artifacts
+*.bin
+*.safetensors
+*.onnx
+checkpoints/
+models/
+
+# Tooling
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+__pycache__/
+*.pyc
