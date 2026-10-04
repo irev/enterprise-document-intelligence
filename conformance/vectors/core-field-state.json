@@ -1,0 +1,12 @@
+{
+  "vector_id":"CORE-FIELD-STATE-001",
+  "specification_area":"canonical-field-state",
+  "input":{
+    "scenario":"Required invoice number is not visible anywhere in an otherwise processable invoice."
+  },
+  "expected":{
+    "allowed_states":["NOT_PRESENT","ILLEGIBLE"],
+    "forbidden_behavior":["invent_value","force_present_with_empty_string"],
+    "notes":"Choice between NOT_PRESENT and ILLEGIBLE depends on evidence about document quality."
+  }
+}
