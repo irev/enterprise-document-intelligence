@@ -1,0 +1,6 @@
+{
+  "vector_id":"NORM-LOCALE-001",
+  "specification_area":"normalization",
+  "input":{"raw_value":"1.234,56","locale_context":null},
+  "expected":{"forbidden_behavior":["silently_assume_en_US_decimal"],"required_behavior":["preserve_raw_value","surface_ambiguity_or_use_explicit_profile_context"]}
+}
