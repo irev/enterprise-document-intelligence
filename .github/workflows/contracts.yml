@@ -1,0 +1,92 @@
+name: Contract Validation
+
+on:
+  push:
+    paths:
+      - "schemas/**"
+      - "profiles/**"
+      - "examples/**"
+      - "openapi/**"
+      - "asyncapi/**"
+      - ".github/workflows/contracts.yml"
+  pull_request:
+    paths:
+      - "schemas/**"
+      - "profiles/**"
+      - "examples/**"
+      - "openapi/**"
+      - "asyncapi/**"
+      - ".github/workflows/contracts.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validators
+        run: python -m pip install --disable-pip-version-check jsonschema pyyaml openapi-spec-validator
+
+      - name: Validate JSON and JSON Schemas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema.validators import validator_for
+
+          for path in Path(".").rglob("*.json"):
+              with path.open(encoding="utf-8") as f:
+                  obj = json.load(f)
+              if "$schema" in obj:
+                  cls = validator_for(obj)
+                  cls.check_schema(obj)
+              print("OK", path)
+          PY
+
+      - name: Validate concrete document profiles
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          schema=json.loads(Path("schemas/profiles/document-profile.schema.json").read_text())
+          validator=Draft202012Validator(schema)
+          for path in Path("profiles").glob("*.profile.json"):
+              validator.validate(json.loads(path.read_text()))
+              print("OK", path)
+          PY
+
+      - name: Validate RFP requirement example
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          schema=json.loads(Path("schemas/business/rfp-requirement-profile.schema.json").read_text())
+          data=json.loads(Path("examples/rfp/requirement-profile.synthetic.json").read_text())
+          Draft202012Validator(schema).validate(data)
+          print("OK RFP requirement profile")
+          PY
+
+      - name: Validate OpenAPI
+        run: openapi-spec-validator openapi/openapi.yaml
+
+      - name: Parse AsyncAPI YAML
+        run: |
+          python - <<'PY'
+          import yaml
+          from pathlib import Path
+          obj=yaml.safe_load(Path("asyncapi/asyncapi.yaml").read_text())
+          assert obj.get("asyncapi") == "3.0.0"
+          assert "channels" in obj and "operations" in obj
+          print("AsyncAPI YAML parsed and baseline structure verified")
+          PY
