@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Dataset Manifest Entry",
+  "type":"object",
+  "required":["sample_id","document_id","taxonomy_version","annotation_status","split","training_eligible","evaluation_eligible"],
+  "properties":{
+    "sample_id":{"type":"string"},
+    "document_id":{"type":"string"},
+    "content_ref":{"type":["string","null"],"description":"Governed storage reference; not necessarily a repository path."},
+    "sha256":{"type":["string","null"]},
+    "tenant":{"type":["string","null"]},
+    "template_family":{"type":["string","null"]},
+    "language":{"type":"array","items":{"type":"string"}},
+    "taxonomy_version":{"type":"string"},
+    "annotation_version":{"type":["string","null"]},
+    "annotation_status":{"enum":["DRAFT","REVIEWED","VERIFIED"]},
+    "sensitivity":{"enum":["PUBLIC","INTERNAL","CONFIDENTIAL","RESTRICTED"]},
+    "training_eligible":{"type":"boolean"},
+    "evaluation_eligible":{"type":"boolean"},
+    "split":{"enum":["TRAIN","VALIDATION","TEST","CHALLENGE","UNASSIGNED"]},
+    "group_keys":{"type":"object","additionalProperties":{"type":"string"}},
+    "provenance":{"type":"object","additionalProperties":true}
+  },
+  "additionalProperties":false
+}
