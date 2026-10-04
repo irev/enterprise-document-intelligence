@@ -46,6 +46,14 @@ Claimed when lifecycle events are exposed:
 - stable event identity;
 - duplicate-delivery-safe semantics expected from consumers where at-least-once delivery applies.
 
+## SEGMENTATION
+
+Claimed when one source/container may be segmented into multiple logical documents:
+- source-to-segment provenance;
+- bounded page/range mapping;
+- independent logical-document classification;
+- safe container handling.
+
 ## DATASET
 
 Claimed when dataset/annotation lifecycle is implemented:
@@ -54,4 +62,4 @@ Claimed when dataset/annotation lifecycle is implemented:
 - split/leakage controls;
 - separation of production data from training eligibility.
 
-An implementation MAY claim any applicable optional capability in addition to CORE. Profiles MAY require specific capabilities.
+An implementation MAY claim any applicable optional capability in addition to CORE. REST/API, EVENTS, SEGMENTATION, REVIEW, BUNDLE, POLICY, and DATASET capabilities remain independent unless a profile explicitly composes them. Profiles MAY require specific capabilities.
