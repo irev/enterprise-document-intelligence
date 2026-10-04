@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.invalid/schemas/conformance/report.schema.json",
+  "title":"Conformance Report",
+  "type":"object",
+  "required":["specification_version","implementation","declared_capabilities","results"],
+  "properties":{
+    "specification_version":{"type":"string"},
+    "implementation":{"type":"object","required":["name","version"],"properties":{"name":{"type":"string"},"version":{"type":"string"},"environment":{"type":["string","null"]}},"additionalProperties":false},
+    "declared_capabilities":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "results":{"type":"array","items":{"type":"object","required":["vector_id","status"],"properties":{"vector_id":{"type":"string"},"status":{"enum":["PASS","FAIL","SKIP","NOT_APPLICABLE"]},"message":{"type":["string","null"]},"evidence_ref":{"type":["string","null"]}},"additionalProperties":false}},
+    "summary":{"type":"object","additionalProperties":{"type":"integer","minimum":0}}
+  },"additionalProperties":false
+}
