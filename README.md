@@ -142,6 +142,7 @@ This repository is a **technology-neutral specification**, not a reference appli
 - [Reference Deployment](docs/architecture/REFERENCE-DEPLOYMENT.md)
 - [Evaluation Test Cases](docs/evaluation/TEST-CASES.md)
 - [Implementation Guide](docs/implementation/IMPLEMENTATION-GUIDE.md)
+- [Reference Implementation Readiness](docs/implementation/REFERENCE-IMPLEMENTATION-READINESS.md)
 - [Persistence Model](docs/domain/PERSISTENCE-MODEL.md)
 - [Rule Engine](docs/policy/RULE-ENGINE.md)
 - [Review Concurrency](docs/human-review/REVIEW-CONCURRENCY.md)
@@ -174,7 +175,7 @@ The architecture intentionally does not mandate a specific OCR engine, VLM, LLM,
 
 ## Next specification milestones
 
-The v0.6 audit remains the historical gap register. v0.9 addresses its priority contract gaps and is a stabilization candidate. Further core expansion should be evidence-driven by representative corporate/RFP validation, independent implementations, security review, or observed interoperability failures. Stack-specific implementations belong in separate repositories or explicitly non-normative material.
+The v0.6 audit remains the historical gap register. v0.9 addresses its priority contract gaps and is a stabilization candidate. Further core expansion should be evidence-driven by representative corporate/RFP validation, independent implementations, security review, or observed interoperability failures. The v0.9 readiness assessment concludes that a first independent reference implementation can begin without selecting a mandatory technology stack in this repository. Stack-specific implementations belong in separate repositories or explicitly non-normative material.
 
 
 ## AI coding agents
